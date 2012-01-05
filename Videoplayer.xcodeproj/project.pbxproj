@@ -14,7 +14,14 @@
 		93D7586114B5BA980095C52F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7586014B5BA980095C52F /* main.m */; };
 		93D7586514B5BA980095C52F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7586414B5BA980095C52F /* AppDelegate.m */; };
 		93D7586814B5BA980095C52F /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D7586614B5BA980095C52F /* MainStoryboard.storyboard */; };
-		93D7586B14B5BA990095C52F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7586A14B5BA990095C52F /* ViewController.m */; };
+		93D7586B14B5BA990095C52F /* StartScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7586A14B5BA990095C52F /* StartScreenViewController.m */; };
+		93D7587914B5BF9D0095C52F /* bucket_empty64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587314B5BF9D0095C52F /* bucket_empty64x64.png */; };
+		93D7587A14B5BF9D0095C52F /* bucket_full64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587414B5BF9D0095C52F /* bucket_full64x64.png */; };
+		93D7587B14B5BF9D0095C52F /* fresh64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587514B5BF9D0095C52F /* fresh64x64.png */; };
+		93D7587C14B5BF9D0095C52F /* rotten64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587614B5BF9D0095C52F /* rotten64x64.png */; };
+		93D7587D14B5BF9D0095C52F /* tomato64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587714B5BF9D0095C52F /* tomato64x64.png */; };
+		93D7587E14B5BF9D0095C52F /* plus64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587814B5BF9D0095C52F /* plus64x64.png */; };
+		93D7588214B5C0060095C52F /* The Expendables 2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 93D7588114B5C0060095C52F /* The Expendables 2.mov */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,15 +29,22 @@
 		93D7585414B5BA980095C52F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		93D7585614B5BA980095C52F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		93D7585814B5BA980095C52F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		93D7585C14B5BA980095C52F /* Videoplayer-Info.plist */ = {isa = PBXFileReference; path = "Videoplayer-Info.plist"; sourceTree = "<group>"; };
+		93D7585C14B5BA980095C52F /* Videoplayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Videoplayer-Info.plist"; sourceTree = "<group>"; };
 		93D7585E14B5BA980095C52F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		93D7586014B5BA980095C52F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		93D7586214B5BA980095C52F /* Videoplayer-Prefix.pch */ = {isa = PBXFileReference; path = "Videoplayer-Prefix.pch"; sourceTree = "<group>"; };
-		93D7586314B5BA980095C52F /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		93D7586214B5BA980095C52F /* Videoplayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Videoplayer-Prefix.pch"; sourceTree = "<group>"; };
+		93D7586314B5BA980095C52F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		93D7586414B5BA980095C52F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		93D7586714B5BA980095C52F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		93D7586914B5BA990095C52F /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
-		93D7586A14B5BA990095C52F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		93D7586914B5BA990095C52F /* StartScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StartScreenViewController.h; sourceTree = "<group>"; };
+		93D7586A14B5BA990095C52F /* StartScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StartScreenViewController.m; sourceTree = "<group>"; };
+		93D7587314B5BF9D0095C52F /* bucket_empty64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bucket_empty64x64.png; sourceTree = "<group>"; };
+		93D7587414B5BF9D0095C52F /* bucket_full64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bucket_full64x64.png; sourceTree = "<group>"; };
+		93D7587514B5BF9D0095C52F /* fresh64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fresh64x64.png; sourceTree = "<group>"; };
+		93D7587614B5BF9D0095C52F /* rotten64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotten64x64.png; sourceTree = "<group>"; };
+		93D7587714B5BF9D0095C52F /* tomato64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomato64x64.png; sourceTree = "<group>"; };
+		93D7587814B5BF9D0095C52F /* plus64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus64x64.png; sourceTree = "<group>"; };
+		93D7588114B5C0060095C52F /* The Expendables 2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "The Expendables 2.mov"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +64,7 @@
 		93D7584514B5BA950095C52F = {
 			isa = PBXGroup;
 			children = (
+				93D7587F14B5BFBC0095C52F /* Resources */,
 				93D7585A14B5BA980095C52F /* Videoplayer */,
 				93D7585314B5BA980095C52F /* Frameworks */,
 				93D7585114B5BA980095C52F /* Products */,
@@ -77,11 +92,11 @@
 		93D7585A14B5BA980095C52F /* Videoplayer */ = {
 			isa = PBXGroup;
 			children = (
+				93D7587214B5BAE80095C52F /* Data */,
+				93D7587114B5BAD90095C52F /* Views */,
 				93D7586314B5BA980095C52F /* AppDelegate.h */,
 				93D7586414B5BA980095C52F /* AppDelegate.m */,
 				93D7586614B5BA980095C52F /* MainStoryboard.storyboard */,
-				93D7586914B5BA990095C52F /* ViewController.h */,
-				93D7586A14B5BA990095C52F /* ViewController.m */,
 				93D7585B14B5BA980095C52F /* Supporting Files */,
 			);
 			path = Videoplayer;
@@ -96,6 +111,44 @@
 				93D7586214B5BA980095C52F /* Videoplayer-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		93D7587114B5BAD90095C52F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93D7586914B5BA990095C52F /* StartScreenViewController.h */,
+				93D7586A14B5BA990095C52F /* StartScreenViewController.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		93D7587214B5BAE80095C52F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		93D7587F14B5BFBC0095C52F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				93D7588114B5C0060095C52F /* The Expendables 2.mov */,
+				93D7588014B5BFCD0095C52F /* icons */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		93D7588014B5BFCD0095C52F /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				93D7587314B5BF9D0095C52F /* bucket_empty64x64.png */,
+				93D7587414B5BF9D0095C52F /* bucket_full64x64.png */,
+				93D7587514B5BF9D0095C52F /* fresh64x64.png */,
+				93D7587614B5BF9D0095C52F /* rotten64x64.png */,
+				93D7587714B5BF9D0095C52F /* tomato64x64.png */,
+				93D7587814B5BF9D0095C52F /* plus64x64.png */,
+			);
+			name = icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,6 +203,13 @@
 			files = (
 				93D7585F14B5BA980095C52F /* InfoPlist.strings in Resources */,
 				93D7586814B5BA980095C52F /* MainStoryboard.storyboard in Resources */,
+				93D7587914B5BF9D0095C52F /* bucket_empty64x64.png in Resources */,
+				93D7587A14B5BF9D0095C52F /* bucket_full64x64.png in Resources */,
+				93D7587B14B5BF9D0095C52F /* fresh64x64.png in Resources */,
+				93D7587C14B5BF9D0095C52F /* rotten64x64.png in Resources */,
+				93D7587D14B5BF9D0095C52F /* tomato64x64.png in Resources */,
+				93D7587E14B5BF9D0095C52F /* plus64x64.png in Resources */,
+				93D7588214B5C0060095C52F /* The Expendables 2.mov in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +222,7 @@
 			files = (
 				93D7586114B5BA980095C52F /* main.m in Sources */,
 				93D7586514B5BA980095C52F /* AppDelegate.m in Sources */,
-				93D7586B14B5BA990095C52F /* ViewController.m in Sources */,
+				93D7586B14B5BA990095C52F /* StartScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
