@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7DC92E7E1584DB9C000A2C8B /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC92E7D1584DB9C000A2C8B /* UIView+Animation.m */; };
+		7DC92E80158501D4000A2C8B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC92E7F158501D4000A2C8B /* CoreImage.framework */; };
+		7DDAD9CF1585238100297B3A /* peace.mov in Resources */ = {isa = PBXBuildFile; fileRef = 7DDAD9CE1585238100297B3A /* peace.mov */; };
+		7DE57E64158E4CCC0095F9FC /* IMDBConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E63158E4CCC0095F9FC /* IMDBConnector.m */; };
+		933D33F015971AA100565593 /* SourceSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933D33EF15971AA100565593 /* SourceSelectionController.m */; };
+		933D33F21597228B00565593 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933D33F11597228A00565593 /* AVFoundation.framework */; };
+		9382918D15A08D0300724592 /* Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9382918B15A08D0300724592 /* Player.xcdatamodeld */; };
+		9382919315A0981C00724592 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9382919215A0981C00724592 /* CoreData.framework */; };
+		9382919915A098CB00724592 /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382919815A098CB00724592 /* Genre.m */; };
+		9382919C15A098CB00724592 /* Soundtrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382919B15A098CB00724592 /* Soundtrack.m */; };
+		9382919F15A098CB00724592 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382919E15A098CB00724592 /* Movie.m */; };
+		938291A215A098CC00724592 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291A115A098CB00724592 /* Song.m */; };
+		938291A515A098CC00724592 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291A415A098CC00724592 /* Actor.m */; };
+		938291A815A0997900724592 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291A715A0997900724592 /* DataManager.m */; };
 		93D7585514B5BA980095C52F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7585414B5BA980095C52F /* UIKit.framework */; };
 		93D7585714B5BA980095C52F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7585614B5BA980095C52F /* Foundation.framework */; };
 		93D7585914B5BA980095C52F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7585814B5BA980095C52F /* CoreGraphics.framework */; };
@@ -21,10 +35,55 @@
 		93D7587C14B5BF9D0095C52F /* rotten64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587614B5BF9D0095C52F /* rotten64x64.png */; };
 		93D7587D14B5BF9D0095C52F /* tomato64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587714B5BF9D0095C52F /* tomato64x64.png */; };
 		93D7587E14B5BF9D0095C52F /* plus64x64.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7587814B5BF9D0095C52F /* plus64x64.png */; };
-		93D7588214B5C0060095C52F /* The Expendables 2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 93D7588114B5C0060095C52F /* The Expendables 2.mov */; };
+		93D7588414B5F6D90095C52F /* imdb128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7588314B5F6D90095C52F /* imdb128x128.png */; };
+		93D7588614B5F95F0095C52F /* play192x192.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D7588514B5F95F0095C52F /* play192x192.png */; };
+		93D7588914B5FE9A0095C52F /* RottenTomatoesConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7588814B5FE9A0095C52F /* RottenTomatoesConnector.m */; };
+		93D758A414B5FEE40095C52F /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7588C14B5FEE40095C52F /* NSObject+SBJson.m */; };
+		93D758A514B5FEE40095C52F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7588F14B5FEE40095C52F /* SBJsonParser.m */; };
+		93D758A614B5FEE40095C52F /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7589114B5FEE40095C52F /* SBJsonStreamParser.m */; };
+		93D758A714B5FEE40095C52F /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7589314B5FEE40095C52F /* SBJsonStreamParserAccumulator.m */; };
+		93D758A814B5FEE40095C52F /* SBJsonStreamParserAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7589514B5FEE40095C52F /* SBJsonStreamParserAdapter.m */; };
+		93D758A914B5FEE40095C52F /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7589714B5FEE40095C52F /* SBJsonStreamParserState.m */; };
+		93D758AA14B5FEE40095C52F /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7589914B5FEE40095C52F /* SBJsonStreamWriter.m */; };
+		93D758AB14B5FEE40095C52F /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7589B14B5FEE40095C52F /* SBJsonStreamWriterAccumulator.m */; };
+		93D758AC14B5FEE40095C52F /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7589D14B5FEE40095C52F /* SBJsonStreamWriterState.m */; };
+		93D758AD14B5FEE40095C52F /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D7589F14B5FEE40095C52F /* SBJsonTokeniser.m */; };
+		93D758AE14B5FEE40095C52F /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D758A114B5FEE40095C52F /* SBJsonUTF8Stream.m */; };
+		93D758AF14B5FEE40095C52F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D758A314B5FEE40095C52F /* SBJsonWriter.m */; };
+		93D758B214B618640095C52F /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D758B114B618640095C52F /* VideoViewController.m */; };
+		93D758B614B61A3A0095C52F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D758B514B61A3A0095C52F /* QuartzCore.framework */; };
+		93D758B714B642820095C52F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D758B314B619780095C52F /* MediaPlayer.framework */; };
+		93D758BB14B644DC0095C52F /* The Expendables 2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 93D758BA14B644DC0095C52F /* The Expendables 2.mov */; };
+		93D83134159759EF00A9A912 /* rocket_icon_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D83133159759EF00A9A912 /* rocket_icon_72px.png */; };
+		93D8313C15975F3600A9A912 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D8313B15975F3600A9A912 /* iCarousel.m */; };
+		93D831531597697C00A9A912 /* carouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D831521597697C00A9A912 /* carouselItem.xib */; };
+		93D831621598FA0E00A9A912 /* DataConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D831611598FA0E00A9A912 /* DataConnector.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7DC92E7C1584DB9C000A2C8B /* UIView+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animation.h"; sourceTree = "<group>"; };
+		7DC92E7D1584DB9C000A2C8B /* UIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animation.m"; sourceTree = "<group>"; };
+		7DC92E7F158501D4000A2C8B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		7DDAD9CE1585238100297B3A /* peace.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = peace.mov; sourceTree = "<group>"; };
+		7DE57E62158E4CCC0095F9FC /* IMDBConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBConnector.h; sourceTree = "<group>"; };
+		7DE57E63158E4CCC0095F9FC /* IMDBConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBConnector.m; sourceTree = "<group>"; };
+		933D33EE15971AA100565593 /* SourceSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceSelectionController.h; sourceTree = "<group>"; };
+		933D33EF15971AA100565593 /* SourceSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceSelectionController.m; sourceTree = "<group>"; };
+		933D33F11597228A00565593 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9382918C15A08D0300724592 /* Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Player.xcdatamodel; sourceTree = "<group>"; };
+		9382919215A0981C00724592 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9382919715A098CB00724592 /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
+		9382919815A098CB00724592 /* Genre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Genre.m; sourceTree = "<group>"; };
+		9382919A15A098CB00724592 /* Soundtrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soundtrack.h; sourceTree = "<group>"; };
+		9382919B15A098CB00724592 /* Soundtrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soundtrack.m; sourceTree = "<group>"; };
+		9382919D15A098CB00724592 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		9382919E15A098CB00724592 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
+		938291A015A098CB00724592 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
+		938291A115A098CB00724592 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
+		938291A315A098CC00724592 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
+		938291A415A098CC00724592 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Actor.m; sourceTree = "<group>"; };
+		938291A615A0997900724592 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		938291A715A0997900724592 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		93D7585014B5BA970095C52F /* Videoplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Videoplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D7585414B5BA980095C52F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		93D7585614B5BA980095C52F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,7 +103,50 @@
 		93D7587614B5BF9D0095C52F /* rotten64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rotten64x64.png; sourceTree = "<group>"; };
 		93D7587714B5BF9D0095C52F /* tomato64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomato64x64.png; sourceTree = "<group>"; };
 		93D7587814B5BF9D0095C52F /* plus64x64.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plus64x64.png; sourceTree = "<group>"; };
-		93D7588114B5C0060095C52F /* The Expendables 2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "The Expendables 2.mov"; sourceTree = "<group>"; };
+		93D7588314B5F6D90095C52F /* imdb128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imdb128x128.png; sourceTree = "<group>"; };
+		93D7588514B5F95F0095C52F /* play192x192.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play192x192.png; sourceTree = "<group>"; };
+		93D7588714B5FE9A0095C52F /* RottenTomatoesConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RottenTomatoesConnector.h; sourceTree = "<group>"; };
+		93D7588814B5FE9A0095C52F /* RottenTomatoesConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RottenTomatoesConnector.m; sourceTree = "<group>"; };
+		93D7588B14B5FEE40095C52F /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
+		93D7588C14B5FEE40095C52F /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
+		93D7588D14B5FEE40095C52F /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
+		93D7588E14B5FEE40095C52F /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		93D7588F14B5FEE40095C52F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		93D7589014B5FEE40095C52F /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
+		93D7589114B5FEE40095C52F /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
+		93D7589214B5FEE40095C52F /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
+		93D7589314B5FEE40095C52F /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
+		93D7589414B5FEE40095C52F /* SBJsonStreamParserAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAdapter.h; sourceTree = "<group>"; };
+		93D7589514B5FEE40095C52F /* SBJsonStreamParserAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAdapter.m; sourceTree = "<group>"; };
+		93D7589614B5FEE40095C52F /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
+		93D7589714B5FEE40095C52F /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
+		93D7589814B5FEE40095C52F /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
+		93D7589914B5FEE40095C52F /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
+		93D7589A14B5FEE40095C52F /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
+		93D7589B14B5FEE40095C52F /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
+		93D7589C14B5FEE40095C52F /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
+		93D7589D14B5FEE40095C52F /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
+		93D7589E14B5FEE40095C52F /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
+		93D7589F14B5FEE40095C52F /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
+		93D758A014B5FEE40095C52F /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
+		93D758A114B5FEE40095C52F /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
+		93D758A214B5FEE40095C52F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		93D758A314B5FEE40095C52F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		93D758B014B618640095C52F /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		93D758B114B618640095C52F /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		93D758B314B619780095C52F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		93D758B514B61A3A0095C52F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		93D758BA14B644DC0095C52F /* The Expendables 2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "The Expendables 2.mov"; sourceTree = "<group>"; };
+		93D831311597576700A9A912 /* LaunchImageTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchImageTransition.h; sourceTree = "<group>"; };
+		93D831321597576700A9A912 /* LaunchImageTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchImageTransition.m; sourceTree = "<group>"; };
+		93D83133159759EF00A9A912 /* rocket_icon_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket_icon_72px.png; sourceTree = "<group>"; };
+		93D8313515975C0300A9A912 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
+		93D8313715975C0F00A9A912 /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		93D8313A15975F3600A9A912 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
+		93D8313B15975F3600A9A912 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
+		93D831521597697C00A9A912 /* carouselItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = carouselItem.xib; path = ../carouselItem.xib; sourceTree = "<group>"; };
+		93D831601598FA0E00A9A912 /* DataConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataConnector.h; sourceTree = "<group>"; };
+		93D831611598FA0E00A9A912 /* DataConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataConnector.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +154,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9382919315A0981C00724592 /* CoreData.framework in Frameworks */,
+				933D33F21597228B00565593 /* AVFoundation.framework in Frameworks */,
+				7DC92E80158501D4000A2C8B /* CoreImage.framework in Frameworks */,
+				93D758B714B642820095C52F /* MediaPlayer.framework in Frameworks */,
+				93D758B614B61A3A0095C52F /* QuartzCore.framework in Frameworks */,
 				93D7585514B5BA980095C52F /* UIKit.framework in Frameworks */,
 				93D7585714B5BA980095C52F /* Foundation.framework in Frameworks */,
 				93D7585914B5BA980095C52F /* CoreGraphics.framework in Frameworks */,
@@ -61,9 +168,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7DC92E7A1584DB4E000A2C8B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				93D8313915975F3600A9A912 /* iCarousel */,
+				93D831311597576700A9A912 /* LaunchImageTransition.h */,
+				93D831321597576700A9A912 /* LaunchImageTransition.m */,
+				7DC92E7C1584DB9C000A2C8B /* UIView+Animation.h */,
+				7DC92E7D1584DB9C000A2C8B /* UIView+Animation.m */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		9382918915A08CBB00724592 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9382918B15A08D0300724592 /* Player.xcdatamodeld */,
+				938291A315A098CC00724592 /* Actor.h */,
+				938291A415A098CC00724592 /* Actor.m */,
+				938291A015A098CB00724592 /* Song.h */,
+				938291A115A098CB00724592 /* Song.m */,
+				9382919D15A098CB00724592 /* Movie.h */,
+				9382919E15A098CB00724592 /* Movie.m */,
+				9382919A15A098CB00724592 /* Soundtrack.h */,
+				9382919B15A098CB00724592 /* Soundtrack.m */,
+				9382919715A098CB00724592 /* Genre.h */,
+				9382919815A098CB00724592 /* Genre.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		93D7584514B5BA950095C52F = {
 			isa = PBXGroup;
 			children = (
+				9382919215A0981C00724592 /* CoreData.framework */,
+				93D8313715975C0F00A9A912 /* Default-Portrait~ipad.png */,
+				93D8313515975C0300A9A912 /* Default-Landscape~ipad.png */,
+				93D83133159759EF00A9A912 /* rocket_icon_72px.png */,
 				93D7587F14B5BFBC0095C52F /* Resources */,
 				93D7585A14B5BA980095C52F /* Videoplayer */,
 				93D7585314B5BA980095C52F /* Frameworks */,
@@ -82,6 +223,10 @@
 		93D7585314B5BA980095C52F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				933D33F11597228A00565593 /* AVFoundation.framework */,
+				7DC92E7F158501D4000A2C8B /* CoreImage.framework */,
+				93D758B514B61A3A0095C52F /* QuartzCore.framework */,
+				93D758B314B619780095C52F /* MediaPlayer.framework */,
 				93D7585414B5BA980095C52F /* UIKit.framework */,
 				93D7585614B5BA980095C52F /* Foundation.framework */,
 				93D7585814B5BA980095C52F /* CoreGraphics.framework */,
@@ -92,10 +237,13 @@
 		93D7585A14B5BA980095C52F /* Videoplayer */ = {
 			isa = PBXGroup;
 			children = (
+				9382918915A08CBB00724592 /* Model */,
+				7DC92E7A1584DB4E000A2C8B /* Tools */,
 				93D7587214B5BAE80095C52F /* Data */,
 				93D7587114B5BAD90095C52F /* Views */,
 				93D7586314B5BA980095C52F /* AppDelegate.h */,
 				93D7586414B5BA980095C52F /* AppDelegate.m */,
+				93D831521597697C00A9A912 /* carouselItem.xib */,
 				93D7586614B5BA980095C52F /* MainStoryboard.storyboard */,
 				93D7585B14B5BA980095C52F /* Supporting Files */,
 			);
@@ -118,6 +266,10 @@
 			children = (
 				93D7586914B5BA990095C52F /* StartScreenViewController.h */,
 				93D7586A14B5BA990095C52F /* StartScreenViewController.m */,
+				93D758B014B618640095C52F /* VideoViewController.h */,
+				93D758B114B618640095C52F /* VideoViewController.m */,
+				933D33EE15971AA100565593 /* SourceSelectionController.h */,
+				933D33EF15971AA100565593 /* SourceSelectionController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -125,6 +277,15 @@
 		93D7587214B5BAE80095C52F /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				93D7588714B5FE9A0095C52F /* RottenTomatoesConnector.h */,
+				93D7588814B5FE9A0095C52F /* RottenTomatoesConnector.m */,
+				7DE57E62158E4CCC0095F9FC /* IMDBConnector.h */,
+				7DE57E63158E4CCC0095F9FC /* IMDBConnector.m */,
+				93D831601598FA0E00A9A912 /* DataConnector.h */,
+				93D831611598FA0E00A9A912 /* DataConnector.m */,
+				938291A615A0997900724592 /* DataManager.h */,
+				938291A715A0997900724592 /* DataManager.m */,
+				93D7588A14B5FEC40095C52F /* SBJson */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -132,7 +293,8 @@
 		93D7587F14B5BFBC0095C52F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				93D7588114B5C0060095C52F /* The Expendables 2.mov */,
+				93D758BA14B644DC0095C52F /* The Expendables 2.mov */,
+				7DDAD9CE1585238100297B3A /* peace.mov */,
 				93D7588014B5BFCD0095C52F /* icons */,
 			);
 			name = Resources;
@@ -141,6 +303,8 @@
 		93D7588014B5BFCD0095C52F /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				93D7588514B5F95F0095C52F /* play192x192.png */,
+				93D7588314B5F6D90095C52F /* imdb128x128.png */,
 				93D7587314B5BF9D0095C52F /* bucket_empty64x64.png */,
 				93D7587414B5BF9D0095C52F /* bucket_full64x64.png */,
 				93D7587514B5BF9D0095C52F /* fresh64x64.png */,
@@ -149,6 +313,47 @@
 				93D7587814B5BF9D0095C52F /* plus64x64.png */,
 			);
 			name = icons;
+			sourceTree = "<group>";
+		};
+		93D7588A14B5FEC40095C52F /* SBJson */ = {
+			isa = PBXGroup;
+			children = (
+				93D7588B14B5FEE40095C52F /* NSObject+SBJson.h */,
+				93D7588C14B5FEE40095C52F /* NSObject+SBJson.m */,
+				93D7588D14B5FEE40095C52F /* SBJson.h */,
+				93D7588E14B5FEE40095C52F /* SBJsonParser.h */,
+				93D7588F14B5FEE40095C52F /* SBJsonParser.m */,
+				93D7589014B5FEE40095C52F /* SBJsonStreamParser.h */,
+				93D7589114B5FEE40095C52F /* SBJsonStreamParser.m */,
+				93D7589214B5FEE40095C52F /* SBJsonStreamParserAccumulator.h */,
+				93D7589314B5FEE40095C52F /* SBJsonStreamParserAccumulator.m */,
+				93D7589414B5FEE40095C52F /* SBJsonStreamParserAdapter.h */,
+				93D7589514B5FEE40095C52F /* SBJsonStreamParserAdapter.m */,
+				93D7589614B5FEE40095C52F /* SBJsonStreamParserState.h */,
+				93D7589714B5FEE40095C52F /* SBJsonStreamParserState.m */,
+				93D7589814B5FEE40095C52F /* SBJsonStreamWriter.h */,
+				93D7589914B5FEE40095C52F /* SBJsonStreamWriter.m */,
+				93D7589A14B5FEE40095C52F /* SBJsonStreamWriterAccumulator.h */,
+				93D7589B14B5FEE40095C52F /* SBJsonStreamWriterAccumulator.m */,
+				93D7589C14B5FEE40095C52F /* SBJsonStreamWriterState.h */,
+				93D7589D14B5FEE40095C52F /* SBJsonStreamWriterState.m */,
+				93D7589E14B5FEE40095C52F /* SBJsonTokeniser.h */,
+				93D7589F14B5FEE40095C52F /* SBJsonTokeniser.m */,
+				93D758A014B5FEE40095C52F /* SBJsonUTF8Stream.h */,
+				93D758A114B5FEE40095C52F /* SBJsonUTF8Stream.m */,
+				93D758A214B5FEE40095C52F /* SBJsonWriter.h */,
+				93D758A314B5FEE40095C52F /* SBJsonWriter.m */,
+			);
+			name = SBJson;
+			sourceTree = "<group>";
+		};
+		93D8313915975F3600A9A912 /* iCarousel */ = {
+			isa = PBXGroup;
+			children = (
+				93D8313A15975F3600A9A912 /* iCarousel.h */,
+				93D8313B15975F3600A9A912 /* iCarousel.m */,
+			);
+			path = iCarousel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,7 +382,7 @@
 		93D7584714B5BA950095C52F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = 93D7584A14B5BA950095C52F /* Build configuration list for PBXProject "Videoplayer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -209,7 +414,12 @@
 				93D7587C14B5BF9D0095C52F /* rotten64x64.png in Resources */,
 				93D7587D14B5BF9D0095C52F /* tomato64x64.png in Resources */,
 				93D7587E14B5BF9D0095C52F /* plus64x64.png in Resources */,
-				93D7588214B5C0060095C52F /* The Expendables 2.mov in Resources */,
+				93D7588414B5F6D90095C52F /* imdb128x128.png in Resources */,
+				93D7588614B5F95F0095C52F /* play192x192.png in Resources */,
+				93D758BB14B644DC0095C52F /* The Expendables 2.mov in Resources */,
+				7DDAD9CF1585238100297B3A /* peace.mov in Resources */,
+				93D83134159759EF00A9A912 /* rocket_icon_72px.png in Resources */,
+				93D831531597697C00A9A912 /* carouselItem.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +433,32 @@
 				93D7586114B5BA980095C52F /* main.m in Sources */,
 				93D7586514B5BA980095C52F /* AppDelegate.m in Sources */,
 				93D7586B14B5BA990095C52F /* StartScreenViewController.m in Sources */,
+				93D7588914B5FE9A0095C52F /* RottenTomatoesConnector.m in Sources */,
+				93D758A414B5FEE40095C52F /* NSObject+SBJson.m in Sources */,
+				93D758A514B5FEE40095C52F /* SBJsonParser.m in Sources */,
+				93D758A614B5FEE40095C52F /* SBJsonStreamParser.m in Sources */,
+				93D758A714B5FEE40095C52F /* SBJsonStreamParserAccumulator.m in Sources */,
+				93D758A814B5FEE40095C52F /* SBJsonStreamParserAdapter.m in Sources */,
+				93D758A914B5FEE40095C52F /* SBJsonStreamParserState.m in Sources */,
+				93D758AA14B5FEE40095C52F /* SBJsonStreamWriter.m in Sources */,
+				93D758AB14B5FEE40095C52F /* SBJsonStreamWriterAccumulator.m in Sources */,
+				93D758AC14B5FEE40095C52F /* SBJsonStreamWriterState.m in Sources */,
+				93D758AD14B5FEE40095C52F /* SBJsonTokeniser.m in Sources */,
+				93D758AE14B5FEE40095C52F /* SBJsonUTF8Stream.m in Sources */,
+				93D758AF14B5FEE40095C52F /* SBJsonWriter.m in Sources */,
+				93D758B214B618640095C52F /* VideoViewController.m in Sources */,
+				7DC92E7E1584DB9C000A2C8B /* UIView+Animation.m in Sources */,
+				7DE57E64158E4CCC0095F9FC /* IMDBConnector.m in Sources */,
+				933D33F015971AA100565593 /* SourceSelectionController.m in Sources */,
+				93D8313C15975F3600A9A912 /* iCarousel.m in Sources */,
+				93D831621598FA0E00A9A912 /* DataConnector.m in Sources */,
+				9382918D15A08D0300724592 /* Player.xcdatamodeld in Sources */,
+				9382919915A098CB00724592 /* Genre.m in Sources */,
+				9382919C15A098CB00724592 /* Soundtrack.m in Sources */,
+				9382919F15A098CB00724592 /* Movie.m in Sources */,
+				938291A215A098CC00724592 /* Song.m in Sources */,
+				938291A515A098CC00724592 /* Actor.m in Sources */,
+				938291A815A0997900724592 /* DataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,6 +490,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -269,6 +506,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -280,6 +518,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -289,6 +528,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -336,8 +576,22 @@
 				93D7587014B5BA990095C52F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9382918B15A08D0300724592 /* Player.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9382918C15A08D0300724592 /* Player.xcdatamodel */,
+			);
+			currentVersion = 9382918C15A08D0300724592 /* Player.xcdatamodel */;
+			path = Player.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 93D7584714B5BA950095C52F /* Project object */;
 }

@@ -8,11 +8,11 @@
 
 #import "RottenTomatoesConnector.h"
 
-#define APIKEY qwqdn6ue3qy6rxxscfc6xzca
-
-
 @implementation RottenTomatoesConnector
 
+@synthesize movieTitle;
+@synthesize movieID;
+@synthesize jsonDict;
 
 static RottenTomatoesConnector *sharedInstance = nil;
 
@@ -46,19 +46,73 @@ static RottenTomatoesConnector *sharedInstance = nil;
     return self;
 }
 
-- (void) connectToService{
-    responseData = [NSMutableData data];  
+- (NSString *) stringForPoster{
+    
+        NSLog(@"%@", [[jsonDict objectForKey:@"posters"] objectForKey:@"original"]);
+    return [[jsonDict objectForKey:@"posters"] objectForKey:@"original"];
+}
+
+- (NSString *) stringForDescription{
+    NSString *description = [NSString stringWithString:[jsonDict objectForKey:@"synopsis"]];
+    return description;
+}
+
+- (NSString *) stringForAudienceRating{
+    NSString *rating = [[jsonDict objectForKey:@"ratings"] objectForKey:@"audience_rating"];
+    NSString *score = [[jsonDict objectForKey:@"ratings"] objectForKey:@"audience_score"];
+    return [NSString stringWithFormat:@"%@: %@%%", rating, score];
+}
+
+- (NSString *) stringForCriticsRating{ 
+    NSString *rating = [[jsonDict objectForKey:@"ratings"] objectForKey:@"critics_rating"];
+    NSString *score = [[jsonDict objectForKey:@"ratings"] objectForKey:@"critics_score"];
+    return [NSString stringWithFormat:@"%@: %@%%", rating, score];
+}
+
+- (NSString *) stringForReleaseYear{ 
+    NSNumber *nr = [jsonDict objectForKey:@"year"];
+    NSString *year = [NSString stringWithFormat:@"Release: %i", nr.intValue];
+    return year;
+}
+
+- (NSString *) stringForRuntime{ 
+    NSString *runtime = [NSString stringWithFormat:@"Runtime: %@ min", [jsonDict objectForKey:@"runtime"]];
+    return runtime;
+}
+
+- (void) connectToServiceForMovie:(NSString *)title{
+    [self setMovieTitle:title];
+    NSString *informationLink = [NSString stringWithFormat:@"http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=%@&q=%@&page_limit=1", APIKEY, [title stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:  
-                             [NSURL URLWithString:@"http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=qwqdn6ue3qy6rxxscfc6xzca&q=Toy+Story+3&page_limit=1"]];  
+                             [NSURL URLWithString:informationLink]];  
+    
     // Perform request and get JSON back as a NSData object
     NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
     
     // Get JSON as a NSString from NSData response
     NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
 
-    NSMutableDictionary *jsonDict = [parser objectWithString:json_string error:nil];
+    NSMutableDictionary *json = [parser objectWithString:json_string error:nil];
+    
+    NSArray *movieData = [json objectForKey:@"movies"];
+    
+    NSMutableDictionary *movieDict = [movieData objectAtIndex:0];
+    
+    [self setMovieID:[movieDict objectForKey:@"id"]];
+    [self createDetailDictionary];
+}
 
-    NSLog(@"%@ - %@", [[jsonDict objectForKey:@"links"] objectForKey:@"self"], [jsonDict objectForKey:@"total"]);
+- (void) createDetailDictionary{
+    NSString *informationLink = [NSString stringWithFormat:@"http://api.rottentomatoes.com/api/public/v1.0/movies/%@.json?apikey=%@",movieID , APIKEY];
+    NSURLRequest *request = [NSURLRequest requestWithURL:  
+                             [NSURL URLWithString:informationLink]];
+    // Perform request and get JSON back as a NSData object
+    NSData *response = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    // Get JSON as a NSString from NSData response
+    NSString *json_string = [[NSString alloc] initWithData:response encoding:NSUTF8StringEncoding];
+    
+    [self setJsonDict:[parser objectWithString:json_string error:nil]];
 }
 
 @end

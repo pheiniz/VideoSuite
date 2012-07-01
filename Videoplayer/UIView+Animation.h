@@ -10,4 +10,7 @@
 
 @interface UIView (Animation)
 
+- (void)fadeIn:(float)secs alpha:(float)alpha option:(UIViewAnimationOptions)option;
+- (void)fadeOut:(float)secs option:(UIViewAnimationOptions)option;
+
 @end

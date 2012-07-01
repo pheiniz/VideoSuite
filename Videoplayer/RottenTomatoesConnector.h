@@ -9,12 +9,24 @@
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
 
+#define APIKEY @"qwqdn6ue3qy6rxxscfc6xzca"
 
 @interface RottenTomatoesConnector : NSObject {
-    NSMutableData *responseData;  
     SBJsonParser *parser;
 }
 
+@property (nonatomic, retain) NSString *movieTitle;
+@property (retain) NSString *movieID;
+@property (retain) NSMutableDictionary *jsonDict;
+
 + (id)sharedInstance;
-- (void) connectToService;
+- (void) connectToServiceForMovie:(NSString *)movieTitle;
+- (void) createDetailDictionary;
+- (NSString *) stringForPoster;
+- (NSString *) stringForDescription;
+- (NSString *) stringForCriticsRating;
+- (NSString *) stringForAudienceRating;
+- (NSString *) stringForReleaseYear;
+- (NSString *) stringForRuntime;
+
 @end

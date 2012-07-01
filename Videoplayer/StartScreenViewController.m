@@ -9,6 +9,14 @@
 #import "StartScreenViewController.h"
 
 @implementation StartScreenViewController
+@synthesize posterView;
+@synthesize descriptionView;
+@synthesize criticsLabel;
+@synthesize audienceLabel;
+@synthesize imdbLabel;
+@synthesize yearLabel;
+@synthesize runtimeLabel;
+@synthesize genresLabel;
 
 - (void)didReceiveMemoryWarning
 {
@@ -21,14 +29,32 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    NSURL *url = [NSURL URLWithString: [[RottenTomatoesConnector sharedInstance] stringForPoster]];
+    [posterView setImage:[UIImage imageWithData: [NSData dataWithContentsOfURL:url]]];
+    [descriptionView setText:[[RottenTomatoesConnector sharedInstance] stringForDescription]];
+    [[descriptionView layer] setCornerRadius:10];
+    [[descriptionView layer] setBorderWidth:1];
+    descriptionView.backgroundColor = [UIColor darkGrayColor];
+    
+    [criticsLabel setText:[[RottenTomatoesConnector sharedInstance] stringForCriticsRating]];
+    [audienceLabel setText:[[RottenTomatoesConnector sharedInstance] stringForAudienceRating]];
+    [imdbLabel setText:[[IMDBConnector sharedInstance] stringForIMDBRating]];
+    [yearLabel setText:[[RottenTomatoesConnector sharedInstance] stringForReleaseYear]];
+    [runtimeLabel setText:[[RottenTomatoesConnector sharedInstance] stringForRuntime]];
+    [genresLabel setText:[[IMDBConnector sharedInstance] stringForGenre]];
 }
 
 - (void)viewDidUnload
 {
+    [self setPosterView:nil];
+    [self setDescriptionView:nil];
+    [self setCriticsLabel:nil];
+    [self setAudienceLabel:nil];
+    [self setImdbLabel:nil];
+    [self setYearLabel:nil];
+    [self setRuntimeLabel:nil];
+    [self setGenresLabel:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -51,4 +77,14 @@
 	[super viewDidDisappear:animated];
 }
 
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation 
+{
+    if (interfaceOrientation==UIInterfaceOrientationLandscapeLeft || interfaceOrientation==UIInterfaceOrientationLandscapeRight)
+        return YES;
+    
+    return NO;
+}
+- (IBAction)movieStart:(id)sender {
+    
+}
 @end

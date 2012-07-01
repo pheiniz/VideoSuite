@@ -1,4 +1,49 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Player" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E2620" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E2620" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Actor" representedClassName="Actor" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rottenID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="actors" inverseEntity="Movie" syncable="YES"/>
+    </entity>
+    <entity name="Genre" representedClassName="Genre" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="genres" inverseEntity="Movie" syncable="YES"/>
+    </entity>
+    <entity name="Movie" representedClassName="Movie" syncable="YES">
+        <attribute name="imdbID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imdbRating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="plot" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="poster" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="rottenAudienceRating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rottenCriticRating" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rottenID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="runningTimeInSec" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="actors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Actor" inverseName="movies" inverseEntity="Actor" syncable="YES"/>
+        <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="movies" inverseEntity="Genre" syncable="YES"/>
+        <relationship name="similarMovies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="similarMovies" inverseEntity="Movie" syncable="YES"/>
+        <relationship name="soundtrack" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Soundtrack" inverseName="movie" inverseEntity="Soundtrack" syncable="YES"/>
+    </entity>
+    <entity name="Song" representedClassName="Song" syncable="YES">
+        <attribute name="amazonID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itunesID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lengthInSec" optional="YES" transient="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="soundtrack" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Soundtrack" inverseName="songs" inverseEntity="Soundtrack" syncable="YES"/>
+    </entity>
+    <entity name="Soundtrack" representedClassName="Soundtrack" syncable="YES">
+        <attribute name="amazonID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="itunesID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="soundtrack" inverseEntity="Movie" syncable="YES"/>
+        <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="soundtrack" inverseEntity="Song" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Movie" positionX="-36" positionY="-45" width="128" height="255"/>
+        <element name="Genre" positionX="178" positionY="132" width="128" height="75"/>
+        <element name="Actor" positionX="180" positionY="33" width="128" height="90"/>
+        <element name="Soundtrack" positionX="-281" positionY="135" width="128" height="120"/>
+        <element name="Song" positionX="-261" positionY="-42" width="128" height="120"/>
+    </elements>
 </model>

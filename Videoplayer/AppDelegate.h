@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LaunchImageTransition.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

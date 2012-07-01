@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SBJson.h"
 
-@interface IMDBConnector : NSObject
+@interface IMDBConnector : NSObject{
+        SBJsonParser *parser;
+}
 
+@property (nonatomic, retain) NSString *movieTitle;
+@property (retain) NSString *imdbMovieID;
+@property (retain) NSMutableDictionary *jsonDict;
+
++ (id)sharedInstance;
+- (void) connectToServiceForMovie:(NSString *)movieTitle;
+- (NSString *) stringForIMDBRating;
+- (NSString *) stringForGenre;
 @end
