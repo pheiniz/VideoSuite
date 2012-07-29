@@ -56,6 +56,26 @@ static IMDBConnector *sharedInstance = nil;
     return [NSString stringWithFormat:@"Genres: %@", genres];
 }
 
+- (NSMutableArray *) trivia{
+    
+    NSMutableArray *trivias = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    NSString *imdbPage = [NSString stringWithFormat:@"http://www.imdb.com/title/%@/trivia", [self imdbMovieID]];
+    NSURL *imdbMovieUrl = [NSURL URLWithString:imdbPage];
+    
+    HTMLParser *htmlparser = [[HTMLParser alloc] initWithContentsOfURL:imdbMovieUrl error:nil];
+    HTMLNode *bodyNode = [htmlparser body];
+    
+    NSArray *inputNodes = [bodyNode findChildTags:@"div"];
+    
+    for (HTMLNode *node in inputNodes) {
+        if ([[node getAttributeNamed:@"class"] isEqualToString:@"sodatext"]) {
+            [trivias addObject:[node.firstChild rawContents]];
+        }
+    }
+    return trivias;
+}
+
 - (void) connectToServiceForMovie:(NSString *)title{
     [self setMovieTitle:title];
     NSString *informationLink = [NSString stringWithFormat:@"http://www.imdbapi.com/?t=%@", [title stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
@@ -72,6 +92,8 @@ static IMDBConnector *sharedInstance = nil;
     
     [self setImdbMovieID:[json objectForKey:@"imdbID"]];
     [self setJsonDict:json];
+    [self trivia];
 }
+
 
 @end

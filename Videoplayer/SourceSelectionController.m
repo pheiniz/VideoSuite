@@ -14,7 +14,8 @@
 
 @implementation SourceSelectionController
 
-@synthesize moviesDictionary;
+@synthesize movies;
+@synthesize selectedMovie;
 @synthesize carousel;
 @synthesize movieTitleLabel;
 
@@ -30,27 +31,48 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [[DataManager sharedInstance] deleteDatabase];
+    
     carousel.type = iCarouselTypeCoverFlow2;
     carousel.scrollSpeed = 0.5;
-	
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES); 
-    NSString *documentsDirectory = [paths objectAtIndex:0];
     
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSArray *fileList = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
-    moviesDictionary = [[NSMutableDictionary alloc] init];
-    for (NSString *filename in fileList){
-        NSLog(@"%@", filename);
-        if ([filename hasSuffix:@".mov"]||
-            [filename hasSuffix:@".mp4"]||
-            [filename hasSuffix:@".m4v"]||
-            [filename hasSuffix:@".3gp"]){
-            NSString* title = [self getMovieNameFromMetadataWithPath:[documentsDirectory stringByAppendingPathComponent:filename]];
-            [moviesDictionary setObject:filename forKey:title];
-        }
+    MPMediaPropertyPredicate *predicate = [MPMediaPropertyPredicate predicateWithValue:[NSNumber numberWithInteger:MPMediaTypeAnyVideo] forProperty:MPMediaItemPropertyMediaType];
+    MPMediaQuery* query = [[MPMediaQuery alloc] init];
+    [query addFilterPredicate:predicate];
+    
+    
+    NSArray *arrayOfItems = [query items];
+    
+    movies = [[NSMutableArray alloc] init];
+    
+    
+    for (MPMediaItem *mediaItem in arrayOfItems){
+        NSURL *url = [mediaItem valueForProperty:MPMediaItemPropertyAssetURL];
+        NSString *title = [self getMovieNameFromMetadataWithPath:[mediaItem valueForProperty:MPMediaItemPropertyAssetURL]];
+        Movie* movie = [[DataManager sharedInstance] getMovie:title withPath:url];
+        [movies addObject:movie];
     }
     
+//    NSFileManager *manager = [NSFileManager defaultManager];
+//    NSArray *fileList = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
+//
+//    for (NSString *filename in fileList){
+//        NSLog(@"%@", filename);
+//        if ([filename hasSuffix:@".mov"]||
+//            [filename hasSuffix:@".mp4"]||
+//            [filename hasSuffix:@".m4v"]||
+//            [filename hasSuffix:@".3gp"]){
+//            NSString* title = [self getMovieNameFromMetadataWithPath:[documentsDirectory stringByAppendingPathComponent:filename]];
+//            Movie* movie = [[DataManager sharedInstance] getMovie:title withPath:filename];
+//            [movies addObject:movie];
+//        }
+//    }
     [carousel reloadData];
+    if (movies.count > 0) {
+        [carousel scrollToItemAtIndex:0 animated:YES];
+    }
+    
 }
 
 - (void)viewDidUnload
@@ -67,14 +89,17 @@
     return NO;
 }
 
--(NSString*) getMovieNameFromMetadataWithPath:(NSString *) path
+-(NSString*) getMovieNameFromMetadataWithPath:(NSURL *) url
 {
-    NSURL *url = [NSURL fileURLWithPath:path];
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
     NSArray *titles = [AVMetadataItem metadataItemsFromArray:asset.commonMetadata
                                                             withKey:AVMetadataCommonKeyTitle keySpace:AVMetadataKeySpaceCommon];
-    AVMetadataItem *title = (AVMetadataItem *)[titles objectAtIndex:0];
-    return (NSString *)title.value;
+    NSString *title = @"The Simpsons";
+    if (titles.count > 0) {
+        AVMetadataItem *titleItem = (AVMetadataItem *)[titles objectAtIndex:0];
+        title = (NSString *)titleItem.value;
+    }
+    return title;
 }
 
 #pragma mark -
@@ -83,29 +108,28 @@
 - (NSUInteger)numberOfItemsInCarousel:(iCarousel *)carousel
 {
     //return the total number of items in the carousel
-    return [moviesDictionary count];
+    return [movies count];
 }
 
-//- (NSUInteger)numberOfVisibleItemsInCarousel:(iCarousel *)carousel
-//{
-//    //return the number of visible carousel items on screen
-//    //this also affects the appearance of circular-type carousels
-//    //this value should be <= numberOfItemsInCarousel
-//    //if you have fewer than about 25 items in your carousel, you don't need
-//    //to use this method at all (by default it matches numberOfItemsInCarousel)
-//    return 2;
-//}
-
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(MoviePreview *)view
 {
     if (!view)
     {
     	//load new item view instance from nib
         //control events are bound to view controller in nib file
     	view = [[[NSBundle mainBundle] loadNibNamed:@"carouselItem" owner:self options:nil] lastObject];
+        
+        Movie *movie = [movies objectAtIndex:index];
+        view.posterView.image = [UIImage imageWithData:[movie poster]];
+        view.titleLabel.text = [movie title];
+        
+        [[view layer] setCornerRadius:15];
+        [[view layer] setBorderWidth:1];
+        
     }
     
-    NSString* movieTitle = [[moviesDictionary allKeys] objectAtIndex:index];
+    //NSString* movieTitle = [[moviesDictionary allKeys] objectAtIndex:index];
+    NSString* movieTitle = [(Movie *)[movies objectAtIndex:index] title];
     [movieTitleLabel setText:movieTitle];
     
     return view;
@@ -113,13 +137,17 @@
 
 - (void)carousel:(iCarousel *)car didSelectItemAtIndex:(NSInteger)index
 {
-    UIView *view = [carousel itemViewAtIndex:index];
-    
-    UILabel *nameLabel = (UILabel*)[view viewWithTag:10];  //very very very dirty. Change that!
-    
-    NSString *name = nameLabel.text;
-    [[DataConnector sharedInstance] setupMovie:name withPath:[moviesDictionary objectForKey:name]];
+    selectedMovie = [movies objectAtIndex:index];
+    //NSString *name = selectedMovie.title;
+    //[[DataConnector sharedInstance] setupMovie:name withPath:selectedMovie.filePath];
     [self performSegueWithIdentifier:@"SelectMovieSegue" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.destinationViewController respondsToSelector:@selector(setMovie:)]) {
+        [segue.destinationViewController performSelector:@selector(setMovie:) 
+                                              withObject:selectedMovie];
+    }
 }
 
 @end

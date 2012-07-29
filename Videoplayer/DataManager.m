@@ -13,7 +13,8 @@
 @synthesize managedObjectContext = __managedObjectContext;
 @synthesize managedObjectModel = __managedObjectModel;
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
-@synthesize fetchedWaypointsController = __fetchedWaypointsController;
+
+@synthesize dataConnector;
 
 static DataManager *sharedInstance = nil;
 
@@ -33,6 +34,7 @@ static DataManager *sharedInstance = nil;
     self = [super init];
     
     if (self) {
+        dataConnector = [DataConnector sharedInstance];
     }
     
     return self;
@@ -80,6 +82,13 @@ static DataManager *sharedInstance = nil;
     }
 }
 
+- (void) deleteDatabase{
+    NSURL *storeURL = [[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject] URLByAppendingPathComponent:@"Player.sqlite"];
+    
+    //in case of errors in persistance store use this to delete current store
+    [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+}
+
 #pragma mark - Core Data stack
 
 /**
@@ -113,7 +122,7 @@ static DataManager *sharedInstance = nil;
         return __managedObjectModel;
     }
     //mom because no versioning. in case of arror try out momd
-    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Player" withExtension:@"mom"]; 
+    NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"Player" withExtension:@"momd"]; 
     
     __managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
     return __managedObjectModel;
@@ -137,29 +146,6 @@ static DataManager *sharedInstance = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
-         [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }    
@@ -167,47 +153,126 @@ static DataManager *sharedInstance = nil;
     return __persistentStoreCoordinator;
 }
 
-#pragma mark - Fetch Data
+#pragma mark - Object creation
 
-- (NSFetchedResultsController *)fetchedWaypointsController {
-    if (__fetchedWaypointsController != nil) {
-        return __fetchedWaypointsController;
+- (Actor *)createActorWithName:(NSString *) name andID:(NSString *) rottenID{
+    Actor* actor = (Actor *)[NSEntityDescription insertNewObjectForEntityForName:@"Actor" inManagedObjectContext:[self managedObjectContext]];
+    actor.rottenID = rottenID;
+    actor.name = name;
+    
+    return actor;
+}
+
+- (Movie *)createMovie:(NSString *) movieTitle withPath:(NSURL *) movieURL{
+    Movie* movie = (Movie *)[NSEntityDescription insertNewObjectForEntityForName:@"Movie" inManagedObjectContext:[self managedObjectContext]];
+    Genre* genre = (Genre *)[NSEntityDescription insertNewObjectForEntityForName:@"Genre" inManagedObjectContext:[self managedObjectContext]];
+    
+    [dataConnector setupMovie:movieTitle withPath:movieURL];
+    
+    movie.title = movieTitle;
+    movie.imdbRating = dataConnector.stringForIMDBRating;
+    movie.imdbID = dataConnector.imdbConnector.imdbMovieID;
+    movie.rottenCriticRating = dataConnector.stringForCriticsRating;
+    movie.rottenAudienceRating = dataConnector.stringForAudienceRating;
+    movie.rottenID = dataConnector.rottenConnector.movieID;
+    movie.plot = dataConnector.stringForDescription;
+    movie.releaseDate = dataConnector.stringForReleaseYear;
+    movie.runningTimeInSec = (NSNumber *)dataConnector.stringForRuntime;
+    movie.filePath = movieURL.absoluteString;
+    
+    NSURL *posterUrl = [NSURL URLWithString: [dataConnector stringForPoster]];
+    movie.poster = UIImagePNGRepresentation([self posterWithURL:posterUrl]);
+    
+    genre.name = dataConnector.stringForGenre;
+    [genre addMoviesObject:movie];
+    [movie addGenresObject:genre];
+    
+    for (NSDictionary *actorJSON in dataConnector.cast) {
+        Actor *actor = [self getActorWithJSONData:actorJSON];
+        [actor addMoviesObject:movie];
+        [movie addActorsObject:actor];
     }
     
+    [self saveContext];
+    
+    return movie;
+}
+
+- (UIImage *)posterWithURL:(NSURL *) posterUrl{
+    return [UIImage imageWithData: [NSData dataWithContentsOfURL:posterUrl]];
+}
+
+
+- (Actor *)getActorWithJSONData:(NSDictionary *) jsonData{
+    
+    //SBJsonParser *parser = [[SBJsonParser alloc] init];
+//    NSMutableDictionary *json = [parser objectWithString:jsonData error:nil];
+    NSString *rottenID = [jsonData objectForKey:@"id"];
+    NSString *name = [jsonData objectForKey:@"name"];
+    
+    Actor* result = nil;
     // Set up the fetched results controller.
     // Create the fetch request for the entity.
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Waypoint" inManagedObjectContext:[[DataManager sharedInstance] managedObjectContext]];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Actor" inManagedObjectContext:[[DataManager sharedInstance] managedObjectContext]];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-    NSArray *sortDescriptors = [NSArray arrayWithObjects:sortDescriptor, nil];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"rottenID LIKE %@",
+                              rottenID];
     
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    [fetchRequest setPredicate:predicate];
     
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[DataManager sharedInstance] managedObjectContext] sectionNameKeyPath:nil cacheName:@"Master"];
-    self.fetchedWaypointsController = aFetchedResultsController;
+    NSError *error = nil;
+    NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (!error){
+        if ([fetchedObjects count] == 0) {
+            result = [self createActorWithName:name andID:rottenID];
+        }else {
+            //fetch movie
+            result = [fetchedObjects objectAtIndex:0];
+        }
+    }
+    return result;
+    //[self performSelectorInBackground:@selector(updateProgressView:) withObject:[NSString stringWithFormat:@"%f",percent]];
     
-	NSError *error = nil;
-	if (![self.fetchedWaypointsController performFetch:&error]) {
-	    /*
-	     Replace this implementation with code to handle the error appropriately.
-         
-	     abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-	     */
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    
-    return __fetchedWaypointsController;
-}  
+}
 
+- (Movie *)getMovie:(NSString *) movieTitle withPath:(NSURL *) movieURL{
+    
+    Movie* result = nil;
+    // Set up the fetched results controller.
+    // Create the fetch request for the entity.
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Movie" inManagedObjectContext:[[DataManager sharedInstance] managedObjectContext]];
+    [fetchRequest setEntity:entity];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:
+                              @"title LIKE %@",
+                              movieTitle];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
+    if (!error){
+        if ([fetchedObjects count] == 0) {
+            result = [self createMovie:movieTitle withPath:movieURL];
+        }else {
+            //fetch movie
+            result = [fetchedObjects objectAtIndex:0];
+        }
+    }
+    return result;
+    //[self performSelectorInBackground:@selector(updateProgressView:) withObject:[NSString stringWithFormat:@"%f",percent]];
+}
 
 @end

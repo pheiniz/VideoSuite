@@ -20,6 +20,7 @@
 -(void)deletePlayerAndNotificationObservers;
 
 -(void)findFaces;
+-(void)fadeOutFaceViews;
 
 -(void)fadeInTriviaInfoViews;
 -(void)fadeOutTriviaInfoViews;
@@ -33,6 +34,8 @@
 @synthesize moviePlayerController;
 @synthesize funnyFactsView;
 @synthesize currentMusicView;
+@synthesize faceViews;
+@synthesize movie;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -67,13 +70,8 @@
 {
     
     [super viewDidLoad];
-    NSString *filePath = [[DataConnector sharedInstance] moviePath];
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *basePath = [paths objectAtIndex:0];
-    NSString *url = [basePath stringByAppendingPathComponent:filePath];
-    NSURL* videoURL = [NSURL fileURLWithPath:url];
-    
-    MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:videoURL];
+    NSString *filePath = [movie filePath];
+    MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:filePath]];
     if (moviePlayer) {
         [self setMoviePlayerController:moviePlayer];
         [self installMovieNotificationObservers];
@@ -81,13 +79,14 @@
     [moviePlayer setControlStyle:MPMovieControlStyleEmbedded];
     [moviePlayer setFullscreen:YES];
     [moviePlayer prepareToPlay];
+    [moviePlayer setAllowsAirPlay:YES];
     
     //For viewing partially.....
     [moviePlayer.view setFrame:self.view.bounds];
     moviePlayer.backgroundView.backgroundColor = [UIColor blackColor]; 
     //[self.view addSubview:moviePlayer.view];  
     self.view = moviePlayer.view;
-    [moviePlayer play];
+    [moviePlayer play]; 
 }
 
 
@@ -162,6 +161,7 @@
             /*
              Add your code here to handle MPMovieFinishReasonPlaybackEnded.
              */
+            [self.navigationController popViewControllerAnimated:YES];
 			break;
             
             /* An error was encountered during playback. */
@@ -174,12 +174,10 @@
 //            [self.backgroundView removeFromSuperview];
 //			break;
 //            
-//            /* The user stopped playback. */
-//		case MPMovieFinishReasonUserExited:
-//            [self removeMovieViewFromViewHierarchy];
-//            [self removeOverlayView];
-//            [self.backgroundView removeFromSuperview];
-//			break;
+            /* The user stopped playback. */
+		case MPMovieFinishReasonUserExited:
+            [self.navigationController popViewControllerAnimated:YES];
+			break;
             
 		default:
 			break;
@@ -229,6 +227,7 @@
         if (funnyFactsView){
             [self fadeOutTriviaInfoViews];
             [self fadeOutMusicInfoViews];
+            [self fadeOutFaceViews];
         }
 	}
 	/* Playback is currently paused. */
@@ -254,9 +253,9 @@
 
 -(void)findFaces
 {
-    UIImage *image = [moviePlayerController thumbnailImageAtTime:moviePlayerController.currentPlaybackTime timeOption:MPMovieTimeOptionExact];
+    faceViews = [[NSMutableArray alloc] initWithCapacity:0];
     
-    //UIImageWriteToSavedPhotosAlbum(image, self,nil, nil);
+    UIImage *image = [moviePlayerController thumbnailImageAtTime:moviePlayerController.currentPlaybackTime timeOption:MPMovieTimeOptionExact];
     
     NSDictionary *options= [NSDictionary dictionaryWithObject:CIDetectorAccuracyHigh
                                                        forKey:CIDetectorAccuracy];
@@ -269,7 +268,7 @@
     float playerWidth = (float)moviePlayerController.view.bounds.size.width;
     float playerHeight = (float)moviePlayerController.view.bounds.size.height;
     float ratio = (float)image.size.width/(float)image.size.height;
-    float diagonal = sqrt(playerWidth*playerWidth + playerHeight*playerHeight); //1268
+    float diagonal = 1268; //sqrt(playerWidth*playerWidth + playerHeight*playerHeight); 
     float temp = (float) sqrtf((ratio*ratio)+1);
     float letterbox = (playerHeight - diagonal/temp)/2;
     float ratioWidth = playerWidth/(float)image.size.width;
@@ -284,49 +283,58 @@
         CGRect faceRect = CGRectMake(facialFeature.bounds.origin.x*ratioWidth,facialFeature.bounds.origin.y*ratioHeight+letterbox,facialFeature.bounds.size.width*ratioWidth,facialFeature.bounds.size.height*ratioHeight);
         faceRect = CGRectApplyAffineTransform(faceRect, transform);
         UIView *faceView = [[UIView alloc] initWithFrame:faceRect];
+        faceView.alpha = 0.0;
         [[faceView layer] setCornerRadius:15];
         [[faceView layer] setBorderWidth:3];
         [[faceView layer] setBorderColor:[UIColor cyanColor].CGColor];
         faceView.backgroundColor = [UIColor clearColor];  
         [moviePlayerController.view addSubview:faceView];
-        
-//        if (facialFeature.hasMouthPosition)
-//        {
-//           CGRect faceRect = CGRectMake(facialFeature.mouthPosition.x*ratioWidth,facialFeature.mouthPosition.y*ratioHeight,50*ratioWidth,50*ratioHeight);
-//            faceRect = CGRectApplyAffineTransform(faceRect, transform);
-//            UIView *faceView = [[UIView alloc] initWithFrame:faceRect];
-//            [[faceView layer] setCornerRadius:15];
-//            [[faceView layer] setBorderWidth:1];
-//            faceView.backgroundColor = [UIColor greenColor];  
-//            [moviePlayerController.view addSubview:faceView];
-//            
-//        }
-//        
-//        if (facialFeature.hasLeftEyePosition)
-//        {
-//            
-//        }
-//        
-//        if (facialFeature.hasRightEyePosition)
-//        {
-//           // [self drawMarker:facialFeature.rightEyePosition];
-//        }        
+        [faceViews addObject:faceView];
+        [faceView fadeIn:1 alpha:0.7 option:UIViewAnimationOptionCurveEaseIn];      
     }  
+}
+
+-(void)fadeOutFaceViews{
+    for (UIView *faceView in faceViews) {
+        [faceView fadeOut:1 option:UIViewAnimationCurveEaseIn];
+    }
+    faceViews = nil;
 }
 
 - (void)fadeInTriviaInfoViews
 {
-    funnyFactsView = [[UIView alloc] initWithFrame:CGRectMake(312,600,400,70)];
+    funnyFactsView = [[UIView alloc] initWithFrame:CGRectMake(312,610,400,70)];
     [[funnyFactsView layer] setCornerRadius:15];
     [[funnyFactsView layer] setBorderWidth:1];
     funnyFactsView.alpha = 0.0;
     funnyFactsView.backgroundColor = [UIColor grayColor];
     
-    UILabel *triviaLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 30, 300, 30)];
-    triviaLabel.text = @"Trivia will be here soon";
+    UILabel *triviaLabel = [[UILabel alloc] initWithFrame:CGRectMake(30, 0, 340, 70)];
+    
+    triviaLabel.font = [UIFont fontWithName:@"Arial Rounded MT" size:(20.0)];
+    NSArray * triviaArray = [[IMDBConnector sharedInstance] trivia];
+    //check if trivia on IMDB is available
+    if ([triviaArray count]>0){
+        NSString *triviaText = [[triviaArray objectAtIndex:0] stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+        triviaLabel.text = triviaText;
+        if (triviaText.length > 120){
+            triviaLabel.font = [UIFont fontWithName:@"Arial Rounded MT" size:(14.0)];
+        }
+    }else {
+        triviaLabel.text = @"No Trivia for you. Sorry!";
+    }
+    
     triviaLabel.textAlignment =  UITextAlignmentCenter;
-    triviaLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(20.0)];
+    CGRect currentFrame = triviaLabel.frame;
+    CGSize max = CGSizeMake(triviaLabel.frame.size.width, 500);
+    CGSize expected = [triviaLabel.text sizeWithFont:triviaLabel.font constrainedToSize:max lineBreakMode:triviaLabel.lineBreakMode]; 
+    currentFrame.size.height = expected.height;
+    triviaLabel.frame = currentFrame;
+    triviaLabel.numberOfLines = 0;
+    triviaLabel.lineBreakMode =UILineBreakModeWordWrap;
     triviaLabel.backgroundColor = [UIColor clearColor];
+
+    
     [funnyFactsView addSubview:triviaLabel];
     
     [moviePlayerController.view addSubview:funnyFactsView];

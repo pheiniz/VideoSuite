@@ -11,12 +11,14 @@
 @implementation StartScreenViewController
 @synthesize posterView;
 @synthesize descriptionView;
+@synthesize actorsView;
 @synthesize criticsLabel;
 @synthesize audienceLabel;
 @synthesize imdbLabel;
 @synthesize yearLabel;
 @synthesize runtimeLabel;
 @synthesize genresLabel;
+@synthesize movie;
 
 - (void)didReceiveMemoryWarning
 {
@@ -29,19 +31,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSURL *url = [NSURL URLWithString: [[RottenTomatoesConnector sharedInstance] stringForPoster]];
-    [posterView setImage:[UIImage imageWithData: [NSData dataWithContentsOfURL:url]]];
-    [descriptionView setText:[[RottenTomatoesConnector sharedInstance] stringForDescription]];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
+    [swipeRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:swipeRight];
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
+    [swipeLeft setDirection:(UISwipeGestureRecognizerDirectionLeft )];
+    [self.view addGestureRecognizer:swipeLeft];
+    
+    [posterView setImage:[UIImage imageWithData:movie.poster]];
+    [descriptionView setText:movie.plot];
     [[descriptionView layer] setCornerRadius:10];
     [[descriptionView layer] setBorderWidth:1];
     descriptionView.backgroundColor = [UIColor darkGrayColor];
     
-    [criticsLabel setText:[[RottenTomatoesConnector sharedInstance] stringForCriticsRating]];
-    [audienceLabel setText:[[RottenTomatoesConnector sharedInstance] stringForAudienceRating]];
-    [imdbLabel setText:[[IMDBConnector sharedInstance] stringForIMDBRating]];
-    [yearLabel setText:[[RottenTomatoesConnector sharedInstance] stringForReleaseYear]];
-    [runtimeLabel setText:[[RottenTomatoesConnector sharedInstance] stringForRuntime]];
-    [genresLabel setText:[[IMDBConnector sharedInstance] stringForGenre]];
+    [[actorsView layer] setCornerRadius:10];
+    [[actorsView layer] setBorderWidth:1];
+    
+    [criticsLabel setText:movie.rottenCriticRating];
+    [audienceLabel setText:movie.rottenAudienceRating];
+    [imdbLabel setText:movie.imdbRating];
+    [yearLabel setText:movie.releaseDate];
+    [runtimeLabel setText:[NSString stringWithFormat:@"Runtime: %d min", [movie.runningTimeInSec intValue]]];
+    [genresLabel setText:[(Genre *)[movie.genres anyObject] name]];
 }
 
 - (void)viewDidUnload
@@ -54,6 +67,7 @@
     [self setYearLabel:nil];
     [self setRuntimeLabel:nil];
     [self setGenresLabel:nil];
+    [self setActorsView:nil];
     [super viewDidUnload];
 }
 
@@ -84,7 +98,21 @@
     
     return NO;
 }
-- (IBAction)movieStart:(id)sender {
-    
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.destinationViewController respondsToSelector:@selector(setMovie:)]) {
+        [segue.destinationViewController performSelector:@selector(setMovie:) 
+                                              withObject:movie];
+    }
 }
+
+- (void)swipeRight:(UISwipeGestureRecognizer *)recognizer {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)swipeLeft:(UISwipeGestureRecognizer *)recognizer {
+    [self performSegueWithIdentifier:@"MoviePlay" sender:self];
+}
+
 @end

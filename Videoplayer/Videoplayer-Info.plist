@@ -11,11 +11,6 @@
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>rocket_icon_72px.png</string>
-		<string>Default-Landscape~ipad.png</string>
-		<string>Default-Portrait~ipad.png</string>
-		<string>Default-Portrait~ipad.png</string>
-		<string>Default-Landscape~ipad.png</string>
-		<string>Default-Landscape~ipad.png</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>
@@ -24,11 +19,6 @@
 			<key>CFBundleIconFiles</key>
 			<array>
 				<string>rocket_icon_72px.png</string>
-				<string>Default-Landscape~ipad.png</string>
-				<string>Default-Portrait~ipad.png</string>
-				<string>Default-Portrait~ipad.png</string>
-				<string>Default-Landscape~ipad.png</string>
-				<string>Default-Landscape~ipad.png</string>
 			</array>
 		</dict>
 	</dict>
@@ -49,13 +39,13 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Dohlen &amp; Heiniz</string>
+	<string>Heiniz</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UIInterfaceOrientation</key>
 	<string>UIInterfaceOrientationLandscapeLeft</string>
-	<key>UILaunchImageFile~ipad</key>
-	<string></string>
+	<key>UILaunchImageFile</key>
+	<string>Default.png</string>
 	<key>UIMainStoryboardFile</key>
 	<string>MainStoryboard</string>
 	<key>UIRequiredDeviceCapabilities</key>

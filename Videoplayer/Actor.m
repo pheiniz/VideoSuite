@@ -2,8 +2,8 @@
 //  Actor.m
 //  Videoplayer
 //
-//  Created by heiniz on 7/1/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Paul Heiniz on 7/28/12.
+//
 //
 
 #import "Actor.h"
@@ -14,6 +14,7 @@
 
 @dynamic name;
 @dynamic rottenID;
+@dynamic picture;
 @dynamic movies;
 
 @end

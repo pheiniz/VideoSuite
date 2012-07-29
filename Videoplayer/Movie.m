@@ -2,7 +2,7 @@
 //  Movie.m
 //  Videoplayer
 //
-//  Created by heiniz on 7/1/12.
+//  Created by heiniz on 7/6/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,19 +15,20 @@
 
 @implementation Movie
 
-@dynamic title;
 @dynamic imdbID;
-@dynamic rottenID;
+@dynamic imdbRating;
 @dynamic plot;
 @dynamic poster;
-@dynamic imdbRating;
+@dynamic releaseDate;
 @dynamic rottenAudienceRating;
 @dynamic rottenCriticRating;
-@dynamic releaseDate;
+@dynamic rottenID;
 @dynamic runningTimeInSec;
-@dynamic genres;
+@dynamic title;
+@dynamic filePath;
 @dynamic actors;
-@dynamic soundtrack;
+@dynamic genres;
 @dynamic similarMovies;
+@dynamic soundtrack;
 
 @end

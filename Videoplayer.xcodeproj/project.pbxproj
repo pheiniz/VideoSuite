@@ -9,18 +9,26 @@
 /* Begin PBXBuildFile section */
 		7DC92E7E1584DB9C000A2C8B /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC92E7D1584DB9C000A2C8B /* UIView+Animation.m */; };
 		7DC92E80158501D4000A2C8B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC92E7F158501D4000A2C8B /* CoreImage.framework */; };
-		7DDAD9CF1585238100297B3A /* peace.mov in Resources */ = {isa = PBXBuildFile; fileRef = 7DDAD9CE1585238100297B3A /* peace.mov */; };
 		7DE57E64158E4CCC0095F9FC /* IMDBConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E63158E4CCC0095F9FC /* IMDBConnector.m */; };
+		9331E16D15A70389000EEF3D /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 9331E16C15A70389000EEF3D /* Movie.m */; };
 		933D33F015971AA100565593 /* SourceSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933D33EF15971AA100565593 /* SourceSelectionController.m */; };
 		933D33F21597228B00565593 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933D33F11597228A00565593 /* AVFoundation.framework */; };
+		9376D9FA15A23C8A00E62513 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9376D9F915A23C8A00E62513 /* libxml2.dylib */; };
+		9376D9FB15A2402E00E62513 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291AB15A0BE6700724592 /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		9376D9FC15A2402E00E62513 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291AD15A0BE6700724592 /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9382918D15A08D0300724592 /* Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9382918B15A08D0300724592 /* Player.xcdatamodeld */; };
 		9382919315A0981C00724592 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9382919215A0981C00724592 /* CoreData.framework */; };
 		9382919915A098CB00724592 /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382919815A098CB00724592 /* Genre.m */; };
 		9382919C15A098CB00724592 /* Soundtrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382919B15A098CB00724592 /* Soundtrack.m */; };
-		9382919F15A098CB00724592 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382919E15A098CB00724592 /* Movie.m */; };
 		938291A215A098CC00724592 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291A115A098CB00724592 /* Song.m */; };
-		938291A515A098CC00724592 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291A415A098CC00724592 /* Actor.m */; };
 		938291A815A0997900724592 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291A715A0997900724592 /* DataManager.m */; };
+		938874ED15A817D6004A514C /* MoviePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 938874EC15A817D6004A514C /* MoviePreview.m */; };
+		938874EF15A826B9004A514C /* Leather-Background-iPad.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 938874EE15A826B8004A514C /* Leather-Background-iPad.jpeg */; };
+		938874F015A858E2004A514C /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D8313515975C0300A9A912 /* Default-Landscape~ipad.png */; };
+		938874F115A875CD004A514C /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359CF1F15A60E1600A25257 /* ReflectionView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		938874F715A9A1A6004A514C /* Steve-Buscemi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 938874F615A9A1A6004A514C /* Steve-Buscemi.jpg */; };
+		938874F915A9A7A0004A514C /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = 938874F815A9A7A0004A514C /* x.png */; };
+		93AA13C815C4130500C5DDEA /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AA13C715C4130500C5DDEA /* Actor.m */; };
 		93D7585514B5BA980095C52F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7585414B5BA980095C52F /* UIKit.framework */; };
 		93D7585714B5BA980095C52F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7585614B5BA980095C52F /* Foundation.framework */; };
 		93D7585914B5BA980095C52F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7585814B5BA980095C52F /* CoreGraphics.framework */; };
@@ -53,7 +61,6 @@
 		93D758B214B618640095C52F /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D758B114B618640095C52F /* VideoViewController.m */; };
 		93D758B614B61A3A0095C52F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D758B514B61A3A0095C52F /* QuartzCore.framework */; };
 		93D758B714B642820095C52F /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D758B314B619780095C52F /* MediaPlayer.framework */; };
-		93D758BB14B644DC0095C52F /* The Expendables 2.mov in Resources */ = {isa = PBXBuildFile; fileRef = 93D758BA14B644DC0095C52F /* The Expendables 2.mov */; };
 		93D83134159759EF00A9A912 /* rocket_icon_72px.png in Resources */ = {isa = PBXBuildFile; fileRef = 93D83133159759EF00A9A912 /* rocket_icon_72px.png */; };
 		93D8313C15975F3600A9A912 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D8313B15975F3600A9A912 /* iCarousel.m */; };
 		93D831531597697C00A9A912 /* carouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93D831521597697C00A9A912 /* carouselItem.xib */; };
@@ -64,26 +71,37 @@
 		7DC92E7C1584DB9C000A2C8B /* UIView+Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Animation.h"; sourceTree = "<group>"; };
 		7DC92E7D1584DB9C000A2C8B /* UIView+Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Animation.m"; sourceTree = "<group>"; };
 		7DC92E7F158501D4000A2C8B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		7DDAD9CE1585238100297B3A /* peace.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = peace.mov; sourceTree = "<group>"; };
 		7DE57E62158E4CCC0095F9FC /* IMDBConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBConnector.h; sourceTree = "<group>"; };
 		7DE57E63158E4CCC0095F9FC /* IMDBConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBConnector.m; sourceTree = "<group>"; };
+		9331E16B15A70389000EEF3D /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
+		9331E16C15A70389000EEF3D /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		933D33EE15971AA100565593 /* SourceSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceSelectionController.h; sourceTree = "<group>"; };
 		933D33EF15971AA100565593 /* SourceSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceSelectionController.m; sourceTree = "<group>"; };
 		933D33F11597228A00565593 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9359CF1E15A60E1600A25257 /* ReflectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReflectionView.h; sourceTree = "<group>"; };
+		9359CF1F15A60E1600A25257 /* ReflectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
+		9376D9F915A23C8A00E62513 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		9382918C15A08D0300724592 /* Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Player.xcdatamodel; sourceTree = "<group>"; };
 		9382919215A0981C00724592 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9382919715A098CB00724592 /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
 		9382919815A098CB00724592 /* Genre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Genre.m; sourceTree = "<group>"; };
 		9382919A15A098CB00724592 /* Soundtrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soundtrack.h; sourceTree = "<group>"; };
 		9382919B15A098CB00724592 /* Soundtrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soundtrack.m; sourceTree = "<group>"; };
-		9382919D15A098CB00724592 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
-		9382919E15A098CB00724592 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		938291A015A098CB00724592 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
 		938291A115A098CB00724592 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
-		938291A315A098CC00724592 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
-		938291A415A098CC00724592 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Actor.m; sourceTree = "<group>"; };
 		938291A615A0997900724592 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		938291A715A0997900724592 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		938291AA15A0BE6700724592 /* HTMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
+		938291AB15A0BE6700724592 /* HTMLNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLNode.m; sourceTree = "<group>"; };
+		938291AC15A0BE6700724592 /* HTMLParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLParser.h; sourceTree = "<group>"; };
+		938291AD15A0BE6700724592 /* HTMLParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HTMLParser.m; sourceTree = "<group>"; };
+		938874EB15A817D6004A514C /* MoviePreview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePreview.h; sourceTree = "<group>"; };
+		938874EC15A817D6004A514C /* MoviePreview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviePreview.m; sourceTree = "<group>"; };
+		938874EE15A826B8004A514C /* Leather-Background-iPad.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Leather-Background-iPad.jpeg"; sourceTree = "<group>"; };
+		938874F615A9A1A6004A514C /* Steve-Buscemi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Steve-Buscemi.jpg"; sourceTree = "<group>"; };
+		938874F815A9A7A0004A514C /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x.png; sourceTree = "<group>"; };
+		93AA13C615C4130500C5DDEA /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
+		93AA13C715C4130500C5DDEA /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Actor.m; sourceTree = "<group>"; };
 		93D7585014B5BA970095C52F /* Videoplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Videoplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D7585414B5BA980095C52F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		93D7585614B5BA980095C52F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -136,7 +154,6 @@
 		93D758B114B618640095C52F /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		93D758B314B619780095C52F /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		93D758B514B61A3A0095C52F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		93D758BA14B644DC0095C52F /* The Expendables 2.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "The Expendables 2.mov"; sourceTree = "<group>"; };
 		93D831311597576700A9A912 /* LaunchImageTransition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LaunchImageTransition.h; sourceTree = "<group>"; };
 		93D831321597576700A9A912 /* LaunchImageTransition.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LaunchImageTransition.m; sourceTree = "<group>"; };
 		93D83133159759EF00A9A912 /* rocket_icon_72px.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket_icon_72px.png; sourceTree = "<group>"; };
@@ -154,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9376D9FA15A23C8A00E62513 /* libxml2.dylib in Frameworks */,
 				9382919315A0981C00724592 /* CoreData.framework in Frameworks */,
 				933D33F21597228B00565593 /* AVFoundation.framework in Frameworks */,
 				7DC92E80158501D4000A2C8B /* CoreImage.framework in Frameworks */,
@@ -171,6 +189,10 @@
 		7DC92E7A1584DB4E000A2C8B /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				93D7588A14B5FEC40095C52F /* SBJson */,
+				9359CF1E15A60E1600A25257 /* ReflectionView.h */,
+				9359CF1F15A60E1600A25257 /* ReflectionView.m */,
+				938291A915A0BE5600724592 /* HTMLParser */,
 				93D8313915975F3600A9A912 /* iCarousel */,
 				93D831311597576700A9A912 /* LaunchImageTransition.h */,
 				93D831321597576700A9A912 /* LaunchImageTransition.m */,
@@ -184,12 +206,12 @@
 			isa = PBXGroup;
 			children = (
 				9382918B15A08D0300724592 /* Player.xcdatamodeld */,
-				938291A315A098CC00724592 /* Actor.h */,
-				938291A415A098CC00724592 /* Actor.m */,
+				93AA13C615C4130500C5DDEA /* Actor.h */,
+				93AA13C715C4130500C5DDEA /* Actor.m */,
+				9331E16B15A70389000EEF3D /* Movie.h */,
+				9331E16C15A70389000EEF3D /* Movie.m */,
 				938291A015A098CB00724592 /* Song.h */,
 				938291A115A098CB00724592 /* Song.m */,
-				9382919D15A098CB00724592 /* Movie.h */,
-				9382919E15A098CB00724592 /* Movie.m */,
 				9382919A15A098CB00724592 /* Soundtrack.h */,
 				9382919B15A098CB00724592 /* Soundtrack.m */,
 				9382919715A098CB00724592 /* Genre.h */,
@@ -198,11 +220,24 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		938291A915A0BE5600724592 /* HTMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				938291AA15A0BE6700724592 /* HTMLNode.h */,
+				938291AB15A0BE6700724592 /* HTMLNode.m */,
+				938291AC15A0BE6700724592 /* HTMLParser.h */,
+				938291AD15A0BE6700724592 /* HTMLParser.m */,
+			);
+			name = HTMLParser;
+			sourceTree = "<group>";
+		};
 		93D7584514B5BA950095C52F = {
 			isa = PBXGroup;
 			children = (
+				9376D9F915A23C8A00E62513 /* libxml2.dylib */,
 				9382919215A0981C00724592 /* CoreData.framework */,
 				93D8313715975C0F00A9A912 /* Default-Portrait~ipad.png */,
+				938874EE15A826B8004A514C /* Leather-Background-iPad.jpeg */,
 				93D8313515975C0300A9A912 /* Default-Landscape~ipad.png */,
 				93D83133159759EF00A9A912 /* rocket_icon_72px.png */,
 				93D7587F14B5BFBC0095C52F /* Resources */,
@@ -270,6 +305,8 @@
 				93D758B114B618640095C52F /* VideoViewController.m */,
 				933D33EE15971AA100565593 /* SourceSelectionController.h */,
 				933D33EF15971AA100565593 /* SourceSelectionController.m */,
+				938874EB15A817D6004A514C /* MoviePreview.h */,
+				938874EC15A817D6004A514C /* MoviePreview.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -285,7 +322,6 @@
 				93D831611598FA0E00A9A912 /* DataConnector.m */,
 				938291A615A0997900724592 /* DataManager.h */,
 				938291A715A0997900724592 /* DataManager.m */,
-				93D7588A14B5FEC40095C52F /* SBJson */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -293,8 +329,6 @@
 		93D7587F14B5BFBC0095C52F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				93D758BA14B644DC0095C52F /* The Expendables 2.mov */,
-				7DDAD9CE1585238100297B3A /* peace.mov */,
 				93D7588014B5BFCD0095C52F /* icons */,
 			);
 			name = Resources;
@@ -303,6 +337,8 @@
 		93D7588014B5BFCD0095C52F /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				938874F815A9A7A0004A514C /* x.png */,
+				938874F615A9A1A6004A514C /* Steve-Buscemi.jpg */,
 				93D7588514B5F95F0095C52F /* play192x192.png */,
 				93D7588314B5F6D90095C52F /* imdb128x128.png */,
 				93D7587314B5BF9D0095C52F /* bucket_empty64x64.png */,
@@ -382,7 +418,7 @@
 		93D7584714B5BA950095C52F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 			};
 			buildConfigurationList = 93D7584A14B5BA950095C52F /* Build configuration list for PBXProject "Videoplayer" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -416,10 +452,12 @@
 				93D7587E14B5BF9D0095C52F /* plus64x64.png in Resources */,
 				93D7588414B5F6D90095C52F /* imdb128x128.png in Resources */,
 				93D7588614B5F95F0095C52F /* play192x192.png in Resources */,
-				93D758BB14B644DC0095C52F /* The Expendables 2.mov in Resources */,
-				7DDAD9CF1585238100297B3A /* peace.mov in Resources */,
 				93D83134159759EF00A9A912 /* rocket_icon_72px.png in Resources */,
 				93D831531597697C00A9A912 /* carouselItem.xib in Resources */,
+				938874EF15A826B9004A514C /* Leather-Background-iPad.jpeg in Resources */,
+				938874F015A858E2004A514C /* Default-Landscape~ipad.png in Resources */,
+				938874F715A9A1A6004A514C /* Steve-Buscemi.jpg in Resources */,
+				938874F915A9A7A0004A514C /* x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +468,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9376D9FB15A2402E00E62513 /* HTMLNode.m in Sources */,
+				9376D9FC15A2402E00E62513 /* HTMLParser.m in Sources */,
 				93D7586114B5BA980095C52F /* main.m in Sources */,
 				93D7586514B5BA980095C52F /* AppDelegate.m in Sources */,
 				93D7586B14B5BA990095C52F /* StartScreenViewController.m in Sources */,
@@ -455,10 +495,12 @@
 				9382918D15A08D0300724592 /* Player.xcdatamodeld in Sources */,
 				9382919915A098CB00724592 /* Genre.m in Sources */,
 				9382919C15A098CB00724592 /* Soundtrack.m in Sources */,
-				9382919F15A098CB00724592 /* Movie.m in Sources */,
 				938291A215A098CC00724592 /* Song.m in Sources */,
-				938291A515A098CC00724592 /* Actor.m in Sources */,
 				938291A815A0997900724592 /* DataManager.m in Sources */,
+				9331E16D15A70389000EEF3D /* Movie.m in Sources */,
+				938874F115A875CD004A514C /* ReflectionView.m in Sources */,
+				938874ED15A817D6004A514C /* MoviePreview.m in Sources */,
+				93AA13C815C4130500C5DDEA /* Actor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +529,7 @@
 		93D7586C14B5BA990095C52F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -505,17 +547,20 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"${SDK_DIR}/usr/include/libxml2\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "\"${SDK_DIR}/usr/include/libxml2\"/**";
 			};
 			name = Debug;
 		};
 		93D7586D14B5BA990095C52F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -526,11 +571,14 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"${SDK_DIR}/usr/include/libxml2\"/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LIBRARY_SEARCH_PATHS = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
+				USER_HEADER_SEARCH_PATHS = "\"${SDK_DIR}/usr/include/libxml2\"/**";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -538,10 +586,20 @@
 		93D7586F14B5BA990095C52F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Heiniz (TRAS4N9MUZ)";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Videoplayer/Videoplayer-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"${SDK_DIR}/usr/include/libxml2\"/**";
 				INFOPLIST_FILE = "Videoplayer/Videoplayer-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8D140C42-BBA8-4B9D-B765-024F849F4F6A";
+				USER_HEADER_SEARCH_PATHS = "\"${SDK_DIR}/usr/include/libxml2\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -549,10 +607,20 @@
 		93D7587014B5BA990095C52F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Heiniz (TRAS4N9MUZ)";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Videoplayer/Videoplayer-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"${SDK_DIR}/usr/include/libxml2\"/**";
 				INFOPLIST_FILE = "Videoplayer/Videoplayer-Info.plist";
+				LIBRARY_SEARCH_PATHS = "";
+				LINK_WITH_STANDARD_LIBRARIES = YES;
+				MACH_O_TYPE = mh_execute;
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8D140C42-BBA8-4B9D-B765-024F849F4F6A";
+				USER_HEADER_SEARCH_PATHS = "\"${SDK_DIR}/usr/include/libxml2\"/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

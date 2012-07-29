@@ -75,9 +75,14 @@ static RottenTomatoesConnector *sharedInstance = nil;
     return year;
 }
 
-- (NSString *) stringForRuntime{ 
-    NSString *runtime = [NSString stringWithFormat:@"Runtime: %@ min", [jsonDict objectForKey:@"runtime"]];
+- (NSNumber *) stringForRuntime{ 
+    NSNumber *runtime = [jsonDict objectForKey:@"runtime"];
     return runtime;
+}
+
+- (NSArray *) cast{
+    NSArray * cast = [jsonDict objectForKey:@"abridged_cast"];
+    return cast;
 }
 
 - (void) connectToServiceForMovie:(NSString *)title{

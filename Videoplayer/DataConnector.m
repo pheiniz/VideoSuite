@@ -11,7 +11,9 @@
 @implementation DataConnector
 
 @synthesize movieTitle;
-@synthesize moviePath;
+@synthesize movieURL;
+@synthesize imdbConnector;
+@synthesize rottenConnector;
 
 static DataConnector *sharedInstance = nil;
 
@@ -32,6 +34,8 @@ static DataConnector *sharedInstance = nil;
     self = [super init];
     
     if (self) {
+        imdbConnector = [IMDBConnector sharedInstance];
+        rottenConnector = [RottenTomatoesConnector sharedInstance];
     }
     
     return self;
@@ -43,12 +47,54 @@ static DataConnector *sharedInstance = nil;
     return self;
 }
 
-- (void)setupMovie:(NSString*)title withPath:(NSString *) path
+- (void)setupMovie:(NSString*)title withPath:(NSURL *) url
 {
     [self setMovieTitle:title];
-    [self setMoviePath:path];
+    [self setMovieURL:url];
     [[IMDBConnector sharedInstance] connectToServiceForMovie:title];
     [[RottenTomatoesConnector sharedInstance] connectToServiceForMovie:title];
+}
+
+#pragma mark - Information methods
+
+- (NSString *)stringForIMDBRating{
+    return [imdbConnector stringForIMDBRating];
+}
+
+- (NSString *) stringForCriticsRating{
+    return [rottenConnector stringForCriticsRating];
+}
+
+- (NSString *) stringForAudienceRating{
+    return [rottenConnector stringForAudienceRating];
+}
+
+- (NSString *) stringForReleaseYear{
+    return [rottenConnector stringForReleaseYear];
+}
+
+- (NSString *) stringForRuntime{
+    return [rottenConnector stringForRuntime];
+}
+
+- (NSString *) stringForDescription{
+    return [rottenConnector stringForDescription];
+}
+
+- (NSString *) stringForGenre{
+    return [imdbConnector stringForGenre];
+}
+
+- (NSString *) stringForPoster{
+    return [rottenConnector stringForPoster];
+}
+
+- (NSArray *) cast{
+    return [rottenConnector cast];
+}
+
+- (NSMutableArray *) trivia{
+    return [imdbConnector trivia];
 }
 
 @end

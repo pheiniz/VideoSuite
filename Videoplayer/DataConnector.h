@@ -13,9 +13,23 @@
 @interface DataConnector : NSObject
 
 @property (retain) NSString *movieTitle;
-@property (retain) NSString *moviePath;
+@property (retain) NSURL *movieURL;
+@property (retain) IMDBConnector *imdbConnector;
+@property (retain) RottenTomatoesConnector *rottenConnector;
 
 + (id)sharedInstance;
-- (void)setupMovie:(NSString*) movieTitle withPath:(NSString *) moviePath;
+- (void)setupMovie:(NSString*) movieTitle withPath:(NSURL *) movieURL;
+
+- (NSString *)stringForIMDBRating;
+- (NSString *) stringForCriticsRating;
+- (NSString *) stringForAudienceRating;
+- (NSString *) stringForReleaseYear;
+- (NSString *) stringForRuntime;
+- (NSString *) stringForDescription;
+- (NSString *) stringForGenre;
+- (NSString *) stringForPoster;
+- (NSMutableArray *) trivia;
+- (NSArray *) cast;
+
 
 @end

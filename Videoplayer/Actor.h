@@ -2,8 +2,8 @@
 //  Actor.h
 //  Videoplayer
 //
-//  Created by heiniz on 7/1/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Paul Heiniz on 7/28/12.
+//
 //
 
 #import <Foundation/Foundation.h>
@@ -15,6 +15,7 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * rottenID;
+@property (nonatomic, retain) NSData * picture;
 @property (nonatomic, retain) NSSet *movies;
 @end
 

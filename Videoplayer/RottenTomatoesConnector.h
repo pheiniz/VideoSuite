@@ -28,5 +28,7 @@
 - (NSString *) stringForAudienceRating;
 - (NSString *) stringForReleaseYear;
 - (NSString *) stringForRuntime;
+- (NSArray *) cast;
+
 
 @end

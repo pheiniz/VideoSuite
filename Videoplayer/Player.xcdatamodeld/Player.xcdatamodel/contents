@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E2620" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12A269" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Actor" representedClassName="Actor" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="rottenID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="actors" inverseEntity="Movie" syncable="YES"/>
     </entity>
@@ -10,11 +11,12 @@
         <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="genres" inverseEntity="Movie" syncable="YES"/>
     </entity>
     <entity name="Movie" representedClassName="Movie" syncable="YES">
+        <attribute name="filePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imdbID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imdbRating" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="plot" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="poster" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="releaseDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rottenAudienceRating" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rottenCriticRating" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rottenID" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,10 +42,10 @@
         <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="soundtrack" inverseEntity="Song" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Movie" positionX="-36" positionY="-45" width="128" height="255"/>
-        <element name="Genre" positionX="178" positionY="132" width="128" height="75"/>
-        <element name="Actor" positionX="180" positionY="33" width="128" height="90"/>
-        <element name="Soundtrack" positionX="-281" positionY="135" width="128" height="120"/>
-        <element name="Song" positionX="-261" positionY="-42" width="128" height="120"/>
+        <element name="Actor" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Genre" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Movie" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Song" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Soundtrack" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
