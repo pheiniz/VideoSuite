@@ -2,7 +2,7 @@
 //  Actor.h
 //  Videoplayer
 //
-//  Created by Paul Heiniz on 8/15/12.
+//  Created by Paul Heiniz on 8/5/12.
 //
 //
 
@@ -13,15 +13,12 @@
 
 @interface Actor : NSManagedObject
 
-@property (nonatomic, retain) NSString * actorID;
-@property (nonatomic, retain) NSString * birthdate;
-@property (nonatomic, retain) NSString * character;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSNumber * order;
 @property (nonatomic, retain) NSData * picture;
-@property (nonatomic, retain) NSString * biography;
-@property (nonatomic, retain) NSString * homepage;
-@property (nonatomic, retain) NSString * birthplace;
+@property (nonatomic, retain) NSString * actorID;
+@property (nonatomic, retain) NSString * character;
+@property (nonatomic, retain) NSNumber * order;
+@property (nonatomic, retain) NSString * birthdate;
 @property (nonatomic, retain) NSSet *movies;
 @end
 
