@@ -80,9 +80,14 @@
         
         if (_delegate) {
             pageView = [_delegate tableView:self viewForIndex:pageIndex];
+            
+            //add tap gesture recogniser
+            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];
+            tapGesture.delegate = (id <UIGestureRecognizerDelegate>)self;
+            [pageView addGestureRecognizer:tapGesture];
+            
             [self.pageViews replaceObjectAtIndex:pageIndex withObject:pageView];
             [self.scrollView addSubview:pageView];
-            DLog(@"View loaded for page %d", pageIndex);
         }
 	} else {
 		pageView = [self.pageViews objectAtIndex:pageIndex];
@@ -134,14 +139,12 @@
     UIView *vw = [[self.columnPool lastObject] retain];
     if (vw) {
         [self.columnPool removeLastObject];
-        DLog(@"Supply from reuse pool");
     }
     return [vw autorelease];
 }
 
 - (void)removeColumn:(NSInteger)index {
     if ([self.pageViews objectAtIndex:index] != [NSNull null]) {
-        DLog(@"Removing view at position %d", index);
         UIView *vw = [self.pageViews objectAtIndex:index];
         [self queueColumnView:vw];
         [vw removeFromSuperview];
@@ -240,16 +243,13 @@
 	_currentPageIndex = newPageIndex;
 	
 	[self currentPageIndexDidChange];
-    
-    CGSize rect = [self.scrollView contentSize];
-    DLog(@"CSize = %@", NSStringFromCGSize(rect));
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	DLog(@"scrollViewDidEndDecelerating");
+	//DLog(@"scrollViewDidEndDecelerating");
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -275,6 +275,27 @@
     self.scrollView.contentSize = CGSizeMake([self.pageViews count] * [self columnWidth], [self pageSize].height);
 
     [self currentPageIndexDidChange];
+}
+
+
+- (void)didTap:(UITapGestureRecognizer *)tapGesture
+{
+    NSInteger index = [self indexOfItemView:[tapGesture.view.subviews lastObject]];
+
+    if ([_delegate respondsToSelector:@selector(tableView:didSelectItemAtIndex:)])
+    {
+        [_delegate tableView:self didSelectItemAtIndex:index];
+    }
+}
+
+- (NSInteger)indexOfItemView:(UIView *)view
+{
+    NSInteger index = [_pageViews indexOfObject:view.superview];
+    if (index != NSNotFound)
+    {
+        return index;
+    }
+    return NSNotFound;
 }
 
 

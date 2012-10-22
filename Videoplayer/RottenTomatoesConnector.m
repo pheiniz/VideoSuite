@@ -47,8 +47,6 @@ static RottenTomatoesConnector *sharedInstance = nil;
 }
 
 - (NSString *) stringForPoster{
-    
-        NSLog(@"%@", [[jsonDict objectForKey:@"posters"] objectForKey:@"original"]);
     return [[jsonDict objectForKey:@"posters"] objectForKey:@"original"];
 }
 
@@ -80,6 +78,11 @@ static RottenTomatoesConnector *sharedInstance = nil;
     return runtime;
 }
 
+- (NSString *) stringForIMDBID{
+    NSString *imdbID = [[jsonDict objectForKey:@"alternate_ids"] objectForKey:@"imdb"];
+    return imdbID;
+}
+
 - (NSArray *) cast{
     NSArray * cast = [jsonDict objectForKey:@"abridged_cast"];
     return cast;
@@ -87,7 +90,7 @@ static RottenTomatoesConnector *sharedInstance = nil;
 
 - (void) connectToServiceForMovie:(NSString *)title{
     [self setMovieTitle:title];
-    NSString *informationLink = [NSString stringWithFormat:@"http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=%@&q=%@&page_limit=1", APIKEY, [title stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
+    NSString *informationLink = [NSString stringWithFormat:@"http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=%@&q=%@&page_limit=1", ROTTEN_APIKEY, [title stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:  
                              [NSURL URLWithString:informationLink]];  
     
@@ -108,7 +111,7 @@ static RottenTomatoesConnector *sharedInstance = nil;
 }
 
 - (void) createDetailDictionary{
-    NSString *informationLink = [NSString stringWithFormat:@"http://api.rottentomatoes.com/api/public/v1.0/movies/%@.json?apikey=%@",movieID , APIKEY];
+    NSString *informationLink = [NSString stringWithFormat:@"http://api.rottentomatoes.com/api/public/v1.0/movies/%@.json?apikey=%@",movieID , ROTTEN_APIKEY];
     NSURLRequest *request = [NSURLRequest requestWithURL:  
                              [NSURL URLWithString:informationLink]];
     // Perform request and get JSON back as a NSData object

@@ -14,7 +14,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    //init user settings
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"faceRecognitionOn"])
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"faceRecognitionOn"];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"soundRecognitionOn"])
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"soundRecognitionOn"];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"triviaRecognitionOn"])
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"triviaRecognitionOn"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     return YES;
 }
 							

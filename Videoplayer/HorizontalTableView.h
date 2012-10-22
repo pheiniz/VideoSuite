@@ -30,6 +30,7 @@
 - (NSInteger)numberOfColumnsForTableView:(HorizontalTableView *)tableView;
 - (UIView *)tableView:(HorizontalTableView *)tableView viewForIndex:(NSInteger)index;
 - (CGFloat)columnWidthForTableView:(HorizontalTableView *)tableView;
+- (void)tableView:(HorizontalTableView *)tableView didSelectItemAtIndex:(NSInteger)index;
 
 @end
 

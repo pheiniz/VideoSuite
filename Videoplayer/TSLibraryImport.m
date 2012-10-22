@@ -91,41 +91,41 @@
 	}];	
 }
 
-- (void)importAsset:(NSURL*)assetURL toURL:(NSURL*)destURL completionBlock:(void (^)(TSLibraryImport* import))completionBlock {
-	if (nil == assetURL || nil == destURL)
-		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"nil url" userInfo:nil];
-	if (![TSLibraryImport validIpodLibraryURL:assetURL])
-		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"Invalid iPod Library URL: %@", assetURL] userInfo:nil];
-
-	if ([[NSFileManager defaultManager] fileExistsAtPath:[destURL path]])
-		 @throw [NSException exceptionWithName:TSFileExistsError reason:[NSString stringWithFormat:@"File already exists at url: %@", destURL] userInfo:nil];
-	
-	NSDictionary * options = [[NSDictionary alloc] init];
-	AVURLAsset* asset = [AVURLAsset URLAssetWithURL:assetURL options:options];	
-	if (nil == asset) 
-		@throw [NSException exceptionWithName:TSUnknownError reason:[NSString stringWithFormat:@"Couldn't create AVURLAsset with url: %@", assetURL] userInfo:nil];
+- (void)importAsset:(AVAsset*)asset toURL:(NSURL*)destURL completionBlock:(void (^)(TSLibraryImport* import))completionBlock {
+//	if (nil == assetURL || nil == destURL)
+//		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"nil url" userInfo:nil];
+//	if (![TSLibraryImport validIpodLibraryURL:assetURL])
+//		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:[NSString stringWithFormat:@"Invalid iPod Library URL: %@", assetURL] userInfo:nil];
+//
+//	if ([[NSFileManager defaultManager] fileExistsAtPath:[destURL path]])
+//		 @throw [NSException exceptionWithName:TSFileExistsError reason:[NSString stringWithFormat:@"File already exists at url: %@", destURL] userInfo:nil];
+//	
+//	NSDictionary * options = [[NSDictionary alloc] init];
+//	AVURLAsset* asset = [AVURLAsset URLAssetWithURL:assetURL options:options];	
+	if (nil == asset)
+		@throw [NSException exceptionWithName:TSUnknownError reason:[NSString stringWithFormat:@"AVAsset is nil"] userInfo:nil];
 	
 	exportSession = [[AVAssetExportSession alloc] initWithAsset:asset presetName:AVAssetExportPresetPassthrough];
 	if (nil == exportSession)
 		@throw [NSException exceptionWithName:TSUnknownError reason:@"Couldn't create AVAssetExportSession" userInfo:nil];
 	
-	if ([[assetURL pathExtension] compare:@"mp3"] == NSOrderedSame) {
-		[self doMp3ImportToFile:destURL completionBlock:completionBlock];
-		return;
-	}
+//	if ([[assetURL pathExtension] compare:@"mp3"] == NSOrderedSame) {
+//		[self doMp3ImportToFile:destURL completionBlock:completionBlock];
+//		return;
+//	}
 
 	exportSession.outputURL = destURL;
 	
 	// set the output file type appropriately based on asset URL extension
-	if ([[assetURL pathExtension] compare:@"m4a"] == NSOrderedSame) {
-		exportSession.outputFileType = AVFileTypeAppleM4A;
-	} else if ([[assetURL pathExtension] compare:@"wav"] == NSOrderedSame) {
-		exportSession.outputFileType = AVFileTypeWAVE;
-	} else if ([[assetURL pathExtension] compare:@"aif"] == NSOrderedSame) {
-		exportSession.outputFileType = AVFileTypeAIFF;
-	} else {
-		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"unrecognized file extension" userInfo:nil];
-	}
+//	if ([[assetURL pathExtension] compare:@"m4a"] == NSOrderedSame) {
+//		exportSession.outputFileType = AVFileTypeAppleM4A;
+//	} else if ([[assetURL pathExtension] compare:@"wav"] == NSOrderedSame) {
+//		exportSession.outputFileType = AVFileTypeWAVE;
+//	} else if ([[assetURL pathExtension] compare:@"aif"] == NSOrderedSame) {
+//		exportSession.outputFileType = AVFileTypeAIFF;
+//	} else {
+//		@throw [NSException exceptionWithName:NSInvalidArgumentException reason:@"unrecognized file extension" userInfo:nil];
+//	}
 
 	[exportSession exportAsynchronouslyWithCompletionHandler:^(void) {
 		completionBlock(self);

@@ -32,46 +32,12 @@
 {
     [super viewDidLoad];
     
-    [[DataManager sharedInstance] deleteDatabase];
+    //[[DataManager sharedInstance] deleteDatabase];
     
     carousel.type = iCarouselTypeCoverFlow2;
     carousel.scrollSpeed = 0.5;
     
-    MPMediaPropertyPredicate *predicate = [MPMediaPropertyPredicate predicateWithValue:[NSNumber numberWithInteger:MPMediaTypeAnyVideo] forProperty:MPMediaItemPropertyMediaType];
-    MPMediaQuery* query = [[MPMediaQuery alloc] init];
-    [query addFilterPredicate:predicate];
-    
-    
-    NSArray *arrayOfItems = [query items];
-    
-    movies = [[NSMutableArray alloc] init];
-    
-    
-    for (MPMediaItem *mediaItem in arrayOfItems){
-        NSURL *url = [mediaItem valueForProperty:MPMediaItemPropertyAssetURL];
-        NSString *title = [self getMovieNameFromMetadataWithPath:[mediaItem valueForProperty:MPMediaItemPropertyAssetURL]];
-        Movie* movie = [[DataManager sharedInstance] getMovie:title withPath:url];
-        [movies addObject:movie];
-    }
-    
-//    NSFileManager *manager = [NSFileManager defaultManager];
-//    NSArray *fileList = [manager contentsOfDirectoryAtPath:documentsDirectory error:nil];
-//
-//    for (NSString *filename in fileList){
-//        NSLog(@"%@", filename);
-//        if ([filename hasSuffix:@".mov"]||
-//            [filename hasSuffix:@".mp4"]||
-//            [filename hasSuffix:@".m4v"]||
-//            [filename hasSuffix:@".3gp"]){
-//            NSString* title = [self getMovieNameFromMetadataWithPath:[documentsDirectory stringByAppendingPathComponent:filename]];
-//            Movie* movie = [[DataManager sharedInstance] getMovie:title withPath:filename];
-//            [movies addObject:movie];
-//        }
-//    }
-    [carousel reloadData];
-    if (movies.count > 0) {
-        [carousel scrollToItemAtIndex:0 animated:YES];
-    }
+    [self loadData];
     
 }
 
@@ -89,12 +55,37 @@
     return NO;
 }
 
+-(void)loadData
+{
+    MPMediaPropertyPredicate *predicate = [MPMediaPropertyPredicate predicateWithValue:[NSNumber numberWithInteger:MPMediaTypeAnyVideo] forProperty:MPMediaItemPropertyMediaType];
+    MPMediaQuery* query = [[MPMediaQuery alloc] init];
+    [query addFilterPredicate:predicate];
+    
+    
+    NSArray *arrayOfItems = [query items];
+    
+    movies = [[NSMutableArray alloc] init];
+    
+    
+    for (MPMediaItem *mediaItem in arrayOfItems){
+        NSURL *url = [mediaItem valueForProperty:MPMediaItemPropertyAssetURL];
+        NSString *title = [self getMovieNameFromMetadataWithPath:[mediaItem valueForProperty:MPMediaItemPropertyAssetURL]];
+        Movie* movie = [[DataManager sharedInstance] getMovie:title withPath:url];
+        [movies addObject:movie];
+    }
+    
+    [carousel reloadData];
+    if (movies.count > 0) {
+        [carousel scrollToItemAtIndex:0 animated:YES];
+    }
+}
+
 -(NSString*) getMovieNameFromMetadataWithPath:(NSURL *) url
 {
     AVURLAsset *asset = [AVURLAsset URLAssetWithURL:url options:nil];
     NSArray *titles = [AVMetadataItem metadataItemsFromArray:asset.commonMetadata
                                                             withKey:AVMetadataCommonKeyTitle keySpace:AVMetadataKeySpaceCommon];
-    NSString *title = @"The Simpsons";
+    NSString *title = @"The Simpsons Movie";
     if (titles.count > 0) {
         AVMetadataItem *titleItem = (AVMetadataItem *)[titles objectAtIndex:0];
         title = (NSString *)titleItem.value;
@@ -122,6 +113,7 @@
         Movie *movie = [movies objectAtIndex:index];
         view.posterView.image = [UIImage imageWithData:[movie poster]];
         view.titleLabel.text = [movie title];
+        view.genreLabel.text = [(Genre *)[movie.genres anyObject] name];
         
         [[view layer] setCornerRadius:15];
         [[view layer] setBorderWidth:1];
@@ -150,4 +142,7 @@
     }
 }
 
+- (IBAction)refreshData:(UIButton *)sender {
+    [self loadData];
+}
 @end

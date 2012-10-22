@@ -11,6 +11,8 @@
 @interface UIView (Animation)
 
 - (void)fadeIn:(float)secs alpha:(float)alpha option:(UIViewAnimationOptions)option;
-- (void)fadeOut:(float)secs option:(UIViewAnimationOptions)option;
+- (void)fadeIn:(float)secs alpha:(float)alpha option:(UIViewAnimationOptions)option withCompletionBlock:(void (^)(BOOL finished))block;
+- (void)fadeOut:(float)secs option:(UIViewAnimationOptions)option removeFromSuperview:(BOOL)remove;
+
 
 @end

@@ -19,6 +19,7 @@
 @synthesize runtimeLabel;
 @synthesize genresLabel;
 @synthesize movie;
+@synthesize castArray;
 
 - (void)didReceiveMemoryWarning
 {
@@ -36,10 +37,6 @@
     [swipeRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:swipeRight];
     
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
-    [swipeLeft setDirection:(UISwipeGestureRecognizerDirectionLeft )];
-    [self.view addGestureRecognizer:swipeLeft];
-    
     [posterView setImage:[UIImage imageWithData:movie.poster]];
     [descriptionView setText:movie.plot];
     [[descriptionView layer] setCornerRadius:10];
@@ -55,6 +52,14 @@
     [yearLabel setText:movie.releaseDate];
     [runtimeLabel setText:[NSString stringWithFormat:@"Runtime: %d min", [movie.runningTimeInSec intValue]]];
     [genresLabel setText:[(Genre *)[movie.genres anyObject] name]];
+
+    //order cast members to display them in the right order
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order" ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    castArray = [[movie.actors allObjects] sortedArrayUsingDescriptors:sortDescriptors];
+    
+    [actorsView refreshData];
+    
 }
 
 - (void)viewDidUnload
@@ -111,8 +116,38 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)swipeLeft:(UISwipeGestureRecognizer *)recognizer {
-    [self performSegueWithIdentifier:@"MoviePlay" sender:self];
+- (NSInteger)numberOfColumnsForTableView:(HorizontalTableView *)tableView {
+    return [movie.actors count];
 }
+
+- (UIView *)tableView:(HorizontalTableView *)aTableView viewForIndex:(NSInteger)index {
+    
+    ActorView *vw;// = (ActorView *)[aTableView dequeueColumnView];
+        
+        vw = [[[NSBundle mainBundle] loadNibNamed:@"actorItem" owner:self options:nil] lastObject];
+        Actor *actor = (Actor *)[castArray objectAtIndex:index];
+        vw.actorPicture.image = [UIImage imageWithData:[actor picture]];
+        vw.nameLabel.text = [NSString stringWithFormat:@"%@\nas\n%@", [actor name], [actor character]];
+	return vw;
+}
+
+- (CGFloat)columnWidthForTableView:(HorizontalTableView *)tableView {
+    return 150.0f;
+}
+
+- (void)tableView:(HorizontalTableView *)tableView didSelectItemAtIndex:(NSInteger)index
+{
+    Actor *actor = [castArray objectAtIndex:index];
+    //show details
+    
+    ActorDetailsView *view;
+    
+    view = [[[NSBundle mainBundle] loadNibNamed:@"ActorDetailsView" owner:self options:nil] lastObject];
+    [self.view addSubview:view];
+    [view initWithActor:actor];
+    
+    [view fadeIn:0.5 alpha:1 option:UIViewAnimationOptionCurveEaseIn];
+}
+
 
 @end

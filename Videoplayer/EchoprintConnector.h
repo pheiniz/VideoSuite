@@ -7,7 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SBJson.h"
 
-@interface EchoprintConnector : NSObject
+#define ECHO_KEY @"QINNRSS2EZ4YRHXNZ"
+
+
+@interface EchoprintConnector : NSObject {
+    SBJsonParser *parser;
+}
+
++ (id)sharedInstance;
+
+- (NSString *) connectToServiceForSongCode:(const char *)code;
 
 @end

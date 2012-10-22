@@ -6,39 +6,68 @@
 //
 //
 
-#import "ActorDetailsViewController.h"
+#import "ActorDetailsView.h"
 
-@interface ActorDetailsViewController ()
+@interface ActorDetailsView ()
 
 @end
 
-@implementation ActorDetailsViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+@implementation ActorDetailsView
+@synthesize buttonBackgroundView;
+@synthesize biographyLabel;
+@synthesize birthdayLabel;
+@synthesize actorPicture;
+@synthesize nameLabel;
+@synthesize homepageLabel;
+@synthesize backgroundView;
+ 
+- (id)initWithFrame:(CGRect)frame
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithFrame:frame];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
+-(void)initWithActor:(Actor *)actor
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.actorPicture.image = [UIImage imageWithData:[actor picture]];
+    self.nameLabel.text = [actor name];
+    self.biographyLabel.text = [actor biography];
+    self.birthdayLabel.text = [NSString stringWithFormat:@"%@ \nin %@", [actor birthdate], [actor birthplace]];
+    self.homepageLabel.text = [actor homepage];
 }
 
-- (void)viewDidUnload
+-(void)awakeFromNib
 {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    [[backgroundView layer] setCornerRadius:15];
+    [[backgroundView layer] setBorderWidth:3];
+    [[backgroundView layer] setBorderColor:[UIColor blackColor].CGColor];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRight:)];
+    [swipeRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [backgroundView addGestureRecognizer:swipeRight];
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeft:)];
+    [swipeLeft setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [backgroundView addGestureRecognizer:swipeLeft];
+    
+    UIImage *image = [UIImage imageNamed:@"gradient_s_w"];
+    buttonBackgroundView.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+    buttonBackgroundView.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
+    [buttonBackgroundView setBackgroundImage:image forState:UIControlStateNormal];
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-	return YES;
+- (IBAction)backgroundSelected:(id)sender {
+    [self fadeOut:0.5 option:UIViewAnimationOptionCurveEaseIn removeFromSuperview:YES];
+}
+
+- (void)swipeRight:(UISwipeGestureRecognizer *)recognizer {
+
+}
+
+- (void)swipeLeft:(UISwipeGestureRecognizer *)recognizer {
+
 }
 
 @end

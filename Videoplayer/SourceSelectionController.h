@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <AVFoundation/AVFoundation.h>
 #import "iCarousel.h"
 #import "DataConnector.h"
 #import "DataManager.h"
@@ -22,5 +21,6 @@
 @property (retain) Movie *selectedMovie;
 @property (weak, nonatomic) IBOutlet iCarousel *carousel;
 @property (weak, nonatomic) IBOutlet UILabel *movieTitleLabel;
+- (IBAction)refreshData:(UIButton *)sender;
 
 @end

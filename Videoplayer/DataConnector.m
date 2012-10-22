@@ -14,6 +14,9 @@
 @synthesize movieURL;
 @synthesize imdbConnector;
 @synthesize rottenConnector;
+@synthesize tmdbConnector;
+@synthesize echoprintConnector;
+@synthesize rekognitionConnector;
 
 static DataConnector *sharedInstance = nil;
 
@@ -36,6 +39,9 @@ static DataConnector *sharedInstance = nil;
     if (self) {
         imdbConnector = [IMDBConnector sharedInstance];
         rottenConnector = [RottenTomatoesConnector sharedInstance];
+        tmdbConnector = [TMDBConnector sharedInstance];
+        echoprintConnector = [EchoprintConnector sharedInstance];
+        rekognitionConnector = [RekognitionConnector sharedInstance];
     }
     
     return self;
@@ -53,6 +59,7 @@ static DataConnector *sharedInstance = nil;
     [self setMovieURL:url];
     [[IMDBConnector sharedInstance] connectToServiceForMovie:title];
     [[RottenTomatoesConnector sharedInstance] connectToServiceForMovie:title];
+    [[TMDBConnector sharedInstance] connectToServiceForMovie:title];
 }
 
 #pragma mark - Information methods
@@ -73,12 +80,12 @@ static DataConnector *sharedInstance = nil;
     return [rottenConnector stringForReleaseYear];
 }
 
-- (NSString *) stringForRuntime{
-    return [rottenConnector stringForRuntime];
+- (NSNumber *) stringForRuntime{
+    return [tmdbConnector stringForRuntime];
 }
 
 - (NSString *) stringForDescription{
-    return [rottenConnector stringForDescription];
+    return [imdbConnector descriptionForMovie:[rottenConnector stringForIMDBID]];
 }
 
 - (NSString *) stringForGenre{
@@ -90,11 +97,23 @@ static DataConnector *sharedInstance = nil;
 }
 
 - (NSArray *) cast{
-    return [rottenConnector cast];
+    return [tmdbConnector cast];
+}
+
+- (NSDictionary *) infoForActor:(NSString *) tmdbPersonID{
+    return [tmdbConnector infoForActor:tmdbPersonID];
 }
 
 - (NSMutableArray *) trivia{
-    return [imdbConnector trivia];
+    return [imdbConnector triviaForMovie:[rottenConnector stringForIMDBID]];
+}
+
+- (NSString *) recognizeSongFromCode:(const char *)code{
+    return [echoprintConnector connectToServiceForSongCode:code];
+}
+
+- (NSString *)recognizeFace:(UIImage *)image{
+    return [rekognitionConnector recognizeFace:image];
 }
 
 @end

@@ -19,14 +19,23 @@
                      completion:nil];
 }
 
-- (void)fadeOut:(float)secs option:(UIViewAnimationOptions)option
+- (void)fadeIn:(float)secs alpha:(float)alpha option:(UIViewAnimationOptions)option withCompletionBlock:(void (^)(BOOL finished))block
+{
+    [UIView animateWithDuration:secs delay:0.0 options:option
+                     animations:^{
+                         self.alpha = alpha;
+                     }
+                     completion:block];
+}
+
+- (void)fadeOut:(float)secs option:(UIViewAnimationOptions)option removeFromSuperview:(BOOL)remove
 {
     [UIView animateWithDuration:secs delay:0.0 options:option
                      animations:^{
                          self.alpha = 0.0;
                      }
                      completion:^ (BOOL finished) {
-                         if (finished) {
+                         if (finished && remove) {
                              [self removeFromSuperview];
                          }
                      }];

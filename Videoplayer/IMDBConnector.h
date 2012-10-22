@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
 #import "HTMLParser.h"
+#import "Trivia.h"
 
 @interface IMDBConnector : NSObject{
         SBJsonParser *parser;
@@ -22,5 +23,6 @@
 - (void) connectToServiceForMovie:(NSString *)movieTitle;
 - (NSString *) stringForIMDBRating;
 - (NSString *) stringForGenre;
-- (NSMutableArray *) trivia;
+- (NSMutableArray *) triviaForMovie:(NSString *) imdbID;
+- (NSString *) descriptionForMovie:(NSString *) imdbID;
 @end

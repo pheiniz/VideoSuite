@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
 
-#define APIKEY @"qwqdn6ue3qy6rxxscfc6xzca"
+#define ROTTEN_APIKEY @"qwqdn6ue3qy6rxxscfc6xzca"
 
 @interface RottenTomatoesConnector : NSObject {
     SBJsonParser *parser;
@@ -28,6 +28,7 @@
 - (NSString *) stringForAudienceRating;
 - (NSString *) stringForReleaseYear;
 - (NSString *) stringForRuntime;
+- (NSString *) stringForIMDBID;
 - (NSArray *) cast;
 
 

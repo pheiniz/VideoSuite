@@ -155,11 +155,41 @@ static DataManager *sharedInstance = nil;
 
 #pragma mark - Object creation
 
-- (Actor *)createActorWithName:(NSString *) name andID:(NSString *) rottenID{
+- (Actor *)createActorFrom:(NSDictionary *)actorDict{
     Actor* actor = (Actor *)[NSEntityDescription insertNewObjectForEntityForName:@"Actor" inManagedObjectContext:[self managedObjectContext]];
-    actor.rottenID = rottenID;
-    actor.name = name;
+    actor.actorID = [[actorDict objectForKey:@"id"] stringValue];
+    actor.name = [actorDict objectForKey:@"name"];
     
+    NSString *bio = [actorDict objectForKey:@"biography"];
+    if (bio == (id)[NSNull null] || bio.length == 0 ){
+        actor.biography = @"Not available";
+    }else {
+        //initial Wikipedia annotation is redundant
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(\\.| |\\n)*from Wikipedia, the free encyclopedia(\\.| |\\n)*" options:NSRegularExpressionCaseInsensitive error:nil];
+        actor.biography = [regex stringByReplacingMatchesInString:bio options:0 range:NSMakeRange(0, [bio length]) withTemplate:@""];
+    }
+    
+    NSString *birthday = [actorDict objectForKey:@"birthday"];
+    if (birthday == (id)[NSNull null] || birthday.length == 0 ){
+        actor.birthdate = @"-";
+    }else {
+        actor.birthdate = birthday;
+    }
+
+    NSString *birthplace = [actorDict objectForKey:@"place_of_birth"];
+    if (birthplace == (id)[NSNull null] || birthplace.length == 0 ){
+        actor.birthplace = @"-";
+    }else {
+        actor.birthplace = birthplace;
+    }
+    
+    actor.character = [actorDict objectForKey:@"character"];
+    
+    NSLog(@"Downloading picture of %@", actor.name);
+    NSString *actorImage = [NSString stringWithFormat:@"%@%@%@?%@", BASEPATH, PROFILESIZEMEDIUM, [actorDict objectForKey:@"profile_path"], TMDB_APIKEY];
+    NSURL *posterUrl = [NSURL URLWithString: actorImage];
+    actor.picture = UIImagePNGRepresentation([self posterWithURL:posterUrl]);
+
     return actor;
 }
 
@@ -171,15 +201,16 @@ static DataManager *sharedInstance = nil;
     
     movie.title = movieTitle;
     movie.imdbRating = dataConnector.stringForIMDBRating;
-    movie.imdbID = dataConnector.imdbConnector.imdbMovieID;
+    movie.imdbID = dataConnector.rottenConnector.stringForIMDBID;
     movie.rottenCriticRating = dataConnector.stringForCriticsRating;
     movie.rottenAudienceRating = dataConnector.stringForAudienceRating;
     movie.rottenID = dataConnector.rottenConnector.movieID;
-    movie.plot = dataConnector.stringForDescription;
+    movie.plot = [dataConnector.stringForDescription stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     movie.releaseDate = dataConnector.stringForReleaseYear;
-    movie.runningTimeInSec = (NSNumber *)dataConnector.stringForRuntime;
+    movie.runningTimeInSec = dataConnector.stringForRuntime;
     movie.filePath = movieURL.absoluteString;
     
+    NSLog(@"Downloading poster for %@", movieTitle);
     NSURL *posterUrl = [NSURL URLWithString: [dataConnector stringForPoster]];
     movie.poster = UIImagePNGRepresentation([self posterWithURL:posterUrl]);
     
@@ -187,10 +218,20 @@ static DataManager *sharedInstance = nil;
     [genre addMoviesObject:movie];
     [movie addGenresObject:genre];
     
+    int order = 0;
     for (NSDictionary *actorJSON in dataConnector.cast) {
         Actor *actor = [self getActorWithJSONData:actorJSON];
+        actor.order = [NSNumber numberWithInt:order];
+        order ++;
         [actor addMoviesObject:movie];
         [movie addActorsObject:actor];
+    }
+    
+    for (NSString *triviaItem in dataConnector.trivia) {
+        Trivia* trivia = (Trivia *)[NSEntityDescription insertNewObjectForEntityForName:@"Trivia" inManagedObjectContext:[self managedObjectContext]];
+        [trivia setTrivia:[triviaItem stringByTrimmingCharactersInSet:[NSCharacterSet newlineCharacterSet]]];
+        [trivia setMovie:movie];
+        [movie addTriviasObject:trivia];
     }
     
     [self saveContext];
@@ -199,7 +240,11 @@ static DataManager *sharedInstance = nil;
 }
 
 - (UIImage *)posterWithURL:(NSURL *) posterUrl{
-    return [UIImage imageWithData: [NSData dataWithContentsOfURL:posterUrl]];
+    if (posterUrl == nil){
+        return [UIImage imageNamed:@"silhouette250x300"];
+    }else{
+        return [UIImage imageWithData: [NSData dataWithContentsOfURL:posterUrl]];
+    }
 }
 
 
@@ -207,8 +252,7 @@ static DataManager *sharedInstance = nil;
     
     //SBJsonParser *parser = [[SBJsonParser alloc] init];
 //    NSMutableDictionary *json = [parser objectWithString:jsonData error:nil];
-    NSString *rottenID = [jsonData objectForKey:@"id"];
-    NSString *name = [jsonData objectForKey:@"name"];
+    NSNumber *actorID = [jsonData objectForKey:@"id"];
     
     Actor* result = nil;
     // Set up the fetched results controller.
@@ -222,8 +266,8 @@ static DataManager *sharedInstance = nil;
     [fetchRequest setFetchBatchSize:20];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"rottenID LIKE %@",
-                              rottenID];
+                              @"actorID LIKE %@",
+                              [actorID stringValue]];
     
     [fetchRequest setPredicate:predicate];
     
@@ -231,7 +275,7 @@ static DataManager *sharedInstance = nil;
     NSArray *fetchedObjects = [[self managedObjectContext] executeFetchRequest:fetchRequest error:&error];
     if (!error){
         if ([fetchedObjects count] == 0) {
-            result = [self createActorWithName:name andID:rottenID];
+            result = [self createActorFrom:jsonData];
         }else {
             //fetch movie
             result = [fetchedObjects objectAtIndex:0];
@@ -243,7 +287,6 @@ static DataManager *sharedInstance = nil;
 }
 
 - (Movie *)getMovie:(NSString *) movieTitle withPath:(NSURL *) movieURL{
-    
     Movie* result = nil;
     // Set up the fetched results controller.
     // Create the fetch request for the entity.
@@ -256,8 +299,8 @@ static DataManager *sharedInstance = nil;
     [fetchRequest setFetchBatchSize:20];
     
     NSPredicate *predicate = [NSPredicate predicateWithFormat:
-                              @"title LIKE %@",
-                              movieTitle];
+                              @"filePath LIKE %@",
+                              movieURL.absoluteString];
     
     [fetchRequest setPredicate:predicate];
     
@@ -273,6 +316,66 @@ static DataManager *sharedInstance = nil;
     }
     return result;
     //[self performSelectorInBackground:@selector(updateProgressView:) withObject:[NSString stringWithFormat:@"%f",percent]];
+}
+
+- (void)recognizeSong: (NSURL *) songURL inInterval:(CMTimeRange) range withPauseTime:(NSNumber *) pauseTime{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSURL* destinationURL = [NSURL fileURLWithPath:[documentsDirectory stringByAppendingPathComponent:@"temp_data"]];
+    [[NSFileManager defaultManager] removeItemAtURL:destinationURL error:nil];
+
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:songURL options:nil];
+    [asset loadValuesAsynchronouslyForKeys:[NSArray arrayWithObject:@"tracks"] completionHandler:^ {
+        
+        NSArray* assets = [asset tracksWithMediaType:AVMediaTypeAudio];
+        AVAssetTrack* audioTrack = [assets objectAtIndex:0];
+        AVMutableComposition* audioComposition = [AVMutableComposition composition];
+        AVMutableCompositionTrack* audioCompositionTrack = [audioComposition addMutableTrackWithMediaType:AVMediaTypeAudio preferredTrackID:kCMPersistentTrackID_Invalid];
+        [audioCompositionTrack insertTimeRange:range ofTrack:audioTrack atTime:kCMTimeZero error:nil];
+        
+        
+        AVAssetExportSession *exportSession = [AVAssetExportSession exportSessionWithAsset:audioComposition presetName:AVAssetExportPresetPassthrough];
+        exportSession.outputURL = destinationURL;
+        exportSession.outputFileType = AVFileTypeAppleM4A;
+        //exportSession.timeRange = range;
+        
+        [exportSession exportAsynchronouslyWithCompletionHandler: ^(void) {
+            
+            if (exportSession.status == AVAssetExportSessionStatusCompleted) {
+                NSString *outPath = [documentsDirectory stringByAppendingPathComponent:@"temp_data"];
+                NSLog(@"done now. %@", outPath);
+                //[statusLine setText:@"analysing..."];
+                char * code = GetPCMFromFile((char*) [outPath  cStringUsingEncoding:NSASCIIStringEncoding]);
+                //NSString* nsMsg = [NSString stringWithUTF8String:code];
+                //NSLog(@"code = %@", nsMsg);
+                //[statusLine setNeedsDisplay];
+                //[self.view setNeedsDisplay];
+                NSString *songTitle = [dataConnector recognizeSongFromCode:code];
+                NSLog(@"song = %@", songTitle);
+                NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:songTitle, @"title", pauseTime, @"time", nil];
+                [[NSNotificationCenter defaultCenter] postNotificationName: @"MusicTitleFoundNotification" object:nil userInfo:userInfo];
+                
+            }
+        }];
+    }];
+    
+//    TSLibraryImport* import = [[TSLibraryImport alloc] init];
+//    [import importAsset:songURL toURL:destinationURL completionBlock:^(TSLibraryImport* import) {
+        //check the status and error properties of
+        //TSLibraryImport
+//        NSString *outPath = [documentsDirectory stringByAppendingPathComponent:@"temp_data"];
+//        NSLog(@"done now. %@", outPath);
+//        //[statusLine setText:@"analysing..."];
+//        const char * code = GetPCMFromFile((char*) [outPath  cStringUsingEncoding:NSASCIIStringEncoding]);
+//        //[statusLine setNeedsDisplay];
+//        //[self.view setNeedsDisplay];
+//        NSString *songTitle = [dataConnector recognizeSongFromCode:code];
+//    }];
+}
+
+- (NSString *)recognizeFace:(UIImage *)image
+{
+    return [dataConnector recognizeFace:image];
 }
 
 @end

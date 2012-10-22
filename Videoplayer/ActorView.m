@@ -9,6 +9,8 @@
 #import "ActorView.h"
 
 @implementation ActorView
+@synthesize nameLabel;
+@synthesize actorPicture;
 
 - (id)initWithFrame:(CGRect)frame
 {

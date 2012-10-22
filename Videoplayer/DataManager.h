@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 #import "DataConnector.h"
 #import "Actor.h"
 #import "Song.h"
 #import "Movie.h"
 #import "Soundtrack.h"
 #import "Genre.h"
+#import "TSLibraryImport.h"
 
 @interface DataManager : NSObject <NSFetchedResultsControllerDelegate>
 
@@ -29,9 +31,11 @@
 - (void) deleteDatabase;
 
 - (Movie *)createMovie:(NSString *) movieTitle withPath:(NSURL *) movieURL;
-- (Actor *)createActorWithName:(NSString *) name andID:(NSString *) rottenID;
+- (Actor *)createActorFrom:(NSDictionary *)actorDict;
 - (Movie *)getMovie:(NSString *) movieTitle withPath:(NSURL *) movieURL;
 - (Actor *)getActorWithJSONData:(NSDictionary *) jsonData;
 - (UIImage *)posterWithURL:(NSURL *) posterurl;
+- (void)recognizeSong: (NSURL *) songURL inInterval:(CMTimeRange) range withPauseTime:(NSNumber *) pauseTime;
+- (NSString *)recognizeFace:(UIImage *)image;
 
 @end

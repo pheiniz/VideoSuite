@@ -11,6 +11,7 @@
 @implementation MoviePreview
 @synthesize posterView;
 @synthesize titleLabel;
+@synthesize genreLabel;
 
 - (id)initWithFrame:(CGRect)frame
 {

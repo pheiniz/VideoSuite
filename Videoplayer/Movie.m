@@ -2,8 +2,8 @@
 //  Movie.m
 //  Videoplayer
 //
-//  Created by heiniz on 7/6/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Paul Heiniz on 29.09.12.
+//
 //
 
 #import "Movie.h"
@@ -11,10 +11,12 @@
 #import "Genre.h"
 #import "Movie.h"
 #import "Soundtrack.h"
+#import "Trivia.h"
 
 
 @implementation Movie
 
+@dynamic filePath;
 @dynamic imdbID;
 @dynamic imdbRating;
 @dynamic plot;
@@ -25,10 +27,10 @@
 @dynamic rottenID;
 @dynamic runningTimeInSec;
 @dynamic title;
-@dynamic filePath;
 @dynamic actors;
 @dynamic genres;
 @dynamic similarMovies;
 @dynamic soundtrack;
+@dynamic trivias;
 
 @end

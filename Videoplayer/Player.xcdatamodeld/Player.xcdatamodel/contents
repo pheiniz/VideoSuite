@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12A269" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1810" systemVersion="12C54" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Actor" representedClassName="Actor" syncable="YES">
+        <attribute name="actorID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="biography" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthdate" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="birthplace" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="character" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="homepage" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
-        <attribute name="rottenID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="movies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="actors" inverseEntity="Movie" syncable="YES"/>
     </entity>
     <entity name="Genre" representedClassName="Genre" syncable="YES">
@@ -26,6 +32,7 @@
         <relationship name="genres" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Genre" inverseName="movies" inverseEntity="Genre" syncable="YES"/>
         <relationship name="similarMovies" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Movie" inverseName="similarMovies" inverseEntity="Movie" syncable="YES"/>
         <relationship name="soundtrack" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Soundtrack" inverseName="movie" inverseEntity="Soundtrack" syncable="YES"/>
+        <relationship name="trivias" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Trivia" inverseName="movie" inverseEntity="Trivia" syncable="YES"/>
     </entity>
     <entity name="Song" representedClassName="Song" syncable="YES">
         <attribute name="amazonID" optional="YES" attributeType="String" syncable="YES"/>
@@ -41,11 +48,17 @@
         <relationship name="movie" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="soundtrack" inverseEntity="Movie" syncable="YES"/>
         <relationship name="songs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Song" inverseName="soundtrack" inverseEntity="Song" syncable="YES"/>
     </entity>
+    <entity name="Trivia" representedClassName="Trivia" syncable="YES">
+        <attribute name="frame" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="trivia" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="movie" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Movie" inverseName="trivias" inverseEntity="Movie" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Actor" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Genre" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Movie" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Song" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Soundtrack" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Actor" positionX="0" positionY="0" width="128" height="195"/>
+        <element name="Genre" positionX="34" positionY="288" width="128" height="75"/>
+        <element name="Movie" positionX="-200" positionY="122" width="128" height="283"/>
+        <element name="Song" positionX="-180" positionY="-153" width="128" height="120"/>
+        <element name="Soundtrack" positionX="-504" positionY="6" width="128" height="120"/>
+        <element name="Trivia" positionX="-459" positionY="341" width="128" height="88"/>
     </elements>
 </model>

@@ -47,20 +47,20 @@ static IMDBConnector *sharedInstance = nil;
 }
 
 - (NSString *) stringForIMDBRating{
-    NSString *rating = [jsonDict objectForKey:@"imdbRating"];
+    NSString *rating = [jsonDict objectForKey:@"rating"];
     return [NSString stringWithFormat:@"%@", rating];
 }
 
 - (NSString *) stringForGenre{
-    NSString *genres = [jsonDict objectForKey:@"Genre"];
-    return [NSString stringWithFormat:@"Genres: %@", genres];
+    NSString *genres = [jsonDict objectForKey:@"genres"];
+    return [NSString stringWithFormat:@"%@", genres];
 }
 
-- (NSMutableArray *) trivia{
+- (NSMutableArray *) triviaForMovie:(NSString *) imdbID{
     
     NSMutableArray *trivias = [[NSMutableArray alloc] initWithCapacity:0];
     
-    NSString *imdbPage = [NSString stringWithFormat:@"http://www.imdb.com/title/%@/trivia", [self imdbMovieID]];
+    NSString *imdbPage = [NSString stringWithFormat:@"http://www.imdb.com/title/tt%@/trivia", imdbID];
     NSURL *imdbMovieUrl = [NSURL URLWithString:imdbPage];
     
     HTMLParser *htmlparser = [[HTMLParser alloc] initWithContentsOfURL:imdbMovieUrl error:nil];
@@ -70,15 +70,44 @@ static IMDBConnector *sharedInstance = nil;
     
     for (HTMLNode *node in inputNodes) {
         if ([[node getAttributeNamed:@"class"] isEqualToString:@"sodatext"]) {
-            [trivias addObject:[node.firstChild rawContents]];
+
+            [trivias addObject:[node allContents]];
         }
     }
     return trivias;
 }
 
+- (NSString *) descriptionForMovie:(NSString *) imdbID{
+    
+    //NSMutableArray *trivias = [[NSMutableArray alloc] initWithCapacity:0];
+    
+    NSString *imdbPage = [NSString stringWithFormat:@"http://www.imdb.com/title/tt%@/plotsummary", imdbID];
+    NSURL *imdbMovieUrl = [NSURL URLWithString:imdbPage];
+    
+    HTMLParser *htmlparser = [[HTMLParser alloc] initWithContentsOfURL:imdbMovieUrl error:nil];
+    HTMLNode *bodyNode = [htmlparser body];
+    
+    NSArray *inputNodes = [bodyNode findChildTags:@"p"];
+    
+    for (HTMLNode *node in inputNodes) {
+        if ([[node getAttributeNamed:@"class"] isEqualToString:@"plotpar"]) {
+            
+            NSString *nodeContent = [node allContents];
+            NSRange rangeOfSubstring = [nodeContent rangeOfString:@"\n Written"];
+            if(rangeOfSubstring.location != NSNotFound)
+            {
+                return [nodeContent substringToIndex:rangeOfSubstring.location];
+            }
+            return nodeContent;
+            
+        }
+    }
+    return @"This movie has no story! Sad :(";
+}
+
 - (void) connectToServiceForMovie:(NSString *)title{
     [self setMovieTitle:title];
-    NSString *informationLink = [NSString stringWithFormat:@"http://www.imdbapi.com/?t=%@", [title stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
+    NSString *informationLink = [NSString stringWithFormat:@"http://www.deanclatworthy.com/imdb/?q=%@", [title stringByReplacingOccurrencesOfString:@" " withString:@"+"]];
     NSURLRequest *request = [NSURLRequest requestWithURL:  
                              [NSURL URLWithString:informationLink]];  
     
@@ -90,9 +119,8 @@ static IMDBConnector *sharedInstance = nil;
     
     NSMutableDictionary *json = [parser objectWithString:json_string error:nil];
     
-    [self setImdbMovieID:[json objectForKey:@"imdbID"]];
+    [self setImdbMovieID:[json objectForKey:@"imdbid"]];
     [self setJsonDict:json];
-    [self trivia];
 }
 
 
