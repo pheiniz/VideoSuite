@@ -438,11 +438,6 @@
 				93D7587114B5BAD90095C52F /* Views */,
 				93D7586314B5BA980095C52F /* AppDelegate.h */,
 				93D7586414B5BA980095C52F /* AppDelegate.m */,
-				93D831521597697C00A9A912 /* carouselItem.xib */,
-				93F788C515C6AF3500D34E2E /* actorItem.xib */,
-				93A2926515CFFAD300520A80 /* ActorDetailsView.xib */,
-				93D7586614B5BA980095C52F /* MainStoryboard.storyboard */,
-				93A4AA4415FCDA8A0091A950 /* layerOverview.xib */,
 				93D7585B14B5BA980095C52F /* Supporting Files */,
 			);
 			path = Videoplayer;
@@ -462,6 +457,7 @@
 		93D7587114B5BAD90095C52F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E33F5FFC179D756700F1C1FA /* Interfaces */,
 				93D7586914B5BA990095C52F /* StartScreenViewController.h */,
 				93D7586A14B5BA990095C52F /* StartScreenViewController.m */,
 				93D758B014B618640095C52F /* VideoViewController.h */,
@@ -573,6 +569,18 @@
 				93D8313B15975F3600A9A912 /* iCarousel.m */,
 			);
 			path = iCarousel;
+			sourceTree = "<group>";
+		};
+		E33F5FFC179D756700F1C1FA /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				93D831521597697C00A9A912 /* carouselItem.xib */,
+				93F788C515C6AF3500D34E2E /* actorItem.xib */,
+				93A2926515CFFAD300520A80 /* ActorDetailsView.xib */,
+				93D7586614B5BA980095C52F /* MainStoryboard.storyboard */,
+				93A4AA4415FCDA8A0091A950 /* layerOverview.xib */,
+			);
+			name = Interfaces;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
