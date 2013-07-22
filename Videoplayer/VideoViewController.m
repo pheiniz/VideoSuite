@@ -437,6 +437,7 @@
         
         UIButton *faceViewButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, transformedFaceRect.size.width, transformedFaceRect.size.height)];
         [faceViewButton addTarget:self action:@selector(faceSelected:) forControlEvents:UIControlEventTouchUpInside];
+        
         //little cheat to pass over attributes via title
         [faceViewButton setTitle:name forState:UIControlStateNormal];
         [faceViewButton setTitleColor:[UIColor clearColor] forState:UIControlStateNormal];

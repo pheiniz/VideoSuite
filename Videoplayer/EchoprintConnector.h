@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
 
-#define ECHO_KEY @"QINNRSS2EZ4YRHXNZ"
+#define ECHO_KEY @"YOURKEYHERE"
 
 
 @interface EchoprintConnector : NSObject {

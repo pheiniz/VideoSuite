@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "SBJson.h"
 
-#define ROTTEN_APIKEY @"qwqdn6ue3qy6rxxscfc6xzca"
+#define ROTTEN_APIKEY @"YOURKEYHERE"
 
 @interface RottenTomatoesConnector : NSObject {
     SBJsonParser *parser;

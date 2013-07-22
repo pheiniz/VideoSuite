@@ -250,8 +250,6 @@ static DataManager *sharedInstance = nil;
 
 - (Actor *)getActorWithJSONData:(NSDictionary *) jsonData{
     
-    //SBJsonParser *parser = [[SBJsonParser alloc] init];
-//    NSMutableDictionary *json = [parser objectWithString:jsonData error:nil];
     NSNumber *actorID = [jsonData objectForKey:@"id"];
     
     Actor* result = nil;
@@ -282,8 +280,7 @@ static DataManager *sharedInstance = nil;
         }
     }
     return result;
-    //[self performSelectorInBackground:@selector(updateProgressView:) withObject:[NSString stringWithFormat:@"%f",percent]];
-    
+   
 }
 
 - (Movie *)getMovie:(NSString *) movieTitle withPath:(NSURL *) movieURL{
@@ -315,9 +312,16 @@ static DataManager *sharedInstance = nil;
         }
     }
     return result;
-    //[self performSelectorInBackground:@selector(updateProgressView:) withObject:[NSString stringWithFormat:@"%f",percent]];
 }
 
+
+/*
+ Records sound from a certain position in movie and creates a fingerprint.
+ Then sends finderprint to server asynchronously.
+ 
+ TODO: Needs refactoring into another class
+
+ */
 - (void)recognizeSong: (NSURL *) songURL inInterval:(CMTimeRange) range withPauseTime:(NSNumber *) pauseTime{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
@@ -337,7 +341,6 @@ static DataManager *sharedInstance = nil;
         AVAssetExportSession *exportSession = [AVAssetExportSession exportSessionWithAsset:audioComposition presetName:AVAssetExportPresetPassthrough];
         exportSession.outputURL = destinationURL;
         exportSession.outputFileType = AVFileTypeAppleM4A;
-        //exportSession.timeRange = range;
         
         [exportSession exportAsynchronouslyWithCompletionHandler: ^(void) {
             
@@ -346,10 +349,7 @@ static DataManager *sharedInstance = nil;
                 NSLog(@"done now. %@", outPath);
                 //[statusLine setText:@"analysing..."];
                 char * code = GetPCMFromFile((char*) [outPath  cStringUsingEncoding:NSASCIIStringEncoding]);
-                //NSString* nsMsg = [NSString stringWithUTF8String:code];
-                //NSLog(@"code = %@", nsMsg);
-                //[statusLine setNeedsDisplay];
-                //[self.view setNeedsDisplay];
+                
                 NSString *songTitle = [dataConnector recognizeSongFromCode:code];
                 NSLog(@"song = %@", songTitle);
                 NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:songTitle, @"title", pauseTime, @"time", nil];
@@ -358,19 +358,7 @@ static DataManager *sharedInstance = nil;
             }
         }];
     }];
-    
-//    TSLibraryImport* import = [[TSLibraryImport alloc] init];
-//    [import importAsset:songURL toURL:destinationURL completionBlock:^(TSLibraryImport* import) {
-        //check the status and error properties of
-        //TSLibraryImport
-//        NSString *outPath = [documentsDirectory stringByAppendingPathComponent:@"temp_data"];
-//        NSLog(@"done now. %@", outPath);
-//        //[statusLine setText:@"analysing..."];
-//        const char * code = GetPCMFromFile((char*) [outPath  cStringUsingEncoding:NSASCIIStringEncoding]);
-//        //[statusLine setNeedsDisplay];
-//        //[self.view setNeedsDisplay];
-//        NSString *songTitle = [dataConnector recognizeSongFromCode:code];
-//    }];
+
 }
 
 - (NSString *)recognizeFace:(UIImage *)image

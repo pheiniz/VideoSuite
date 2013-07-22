@@ -10,7 +10,7 @@
 #import "SBJson.h"
 #import "Actor.h"
 
-#define TMDB_APIKEY @"api_key=f9a2bc88494903a20a8286736aaa7222"
+#define TMDB_APIKEY @"api_key=YOURKEYHERE"
 #define BASEPATH @"http://cf2.imgobject.com/t/p/"
 #define PROFILESIZESMALL @"w45"
 #define PROFILESIZEMEDIUM @"w185"
