@@ -11,7 +11,7 @@ First, before the movie starts, you will see all static informations which are a
 ![Start](http://pheiniz.github.io/VideoSuite/init.png)
 
 While movie is running, you should be able to select an actor's face to get more informations immediately. Soundtrack is recognized when music plays. Informations to the scene as well as user somments should be presented in real-time in later development stages.
-![Plain](https://github.com/pheiniz/VideoSuite/blob/gh-pages/clean.png) ![Layers](pheiniz.github.com/VideoSuite/gh-pages/layer.png)
+![Plain](http://pheiniz.github.io/VideoSuite/clean.png) ![Layers](http://pheiniz.github.io/VideoSuite/layer.png)
 
 This repo works only on iPads (iOS 5 or higher) due to the compiling of the echolib library. You should compile a version for simulator if you really need it (see http://echoprint.me/ for more information).
 
