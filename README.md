@@ -10,7 +10,7 @@ The idea: I aimed to develop a video player for touch interfaces that goes beyon
 First, before the movie starts, you will see all static informations which are available. Sources are IMDB, Rotten Tomatoes, TMDb, you name it.
 ![Start](http://pheiniz.github.io/VideoSuite/init.png)
 
-While movie is running, you should be able to select an actor's face to get more informations immediately. Soundtrack is recognized when music plays. Informations to the scene as well as user somments should be presented in real-time in later development stages.
+While movie is running, you should be able to select an actor's face to get more informations immediately. Soundtrack is recognised when music plays. Informations to the scene as well as user comments should be presented in real-time in later development stages.
 ![Plain](http://pheiniz.github.io/VideoSuite/clean.png) ![Layers](http://pheiniz.github.io/VideoSuite/layer.png)
 
 This repo works only on iPads (iOS 5 or higher) due to the compiling of the echolib library. You should compile a version for simulator if you really need it (see http://echoprint.me/ for more information).
