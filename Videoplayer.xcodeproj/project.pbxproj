@@ -10,18 +10,12 @@
 		7DC92E7E1584DB9C000A2C8B /* UIView+Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DC92E7D1584DB9C000A2C8B /* UIView+Animation.m */; };
 		7DC92E80158501D4000A2C8B /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DC92E7F158501D4000A2C8B /* CoreImage.framework */; };
 		7DE57E64158E4CCC0095F9FC /* IMDBConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE57E63158E4CCC0095F9FC /* IMDBConnector.m */; };
-		930E738A1617723800236359 /* Trivia.m in Sources */ = {isa = PBXBuildFile; fileRef = 930E73891617723800236359 /* Trivia.m */; };
-		930E738E161772BE00236359 /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = 930E738D161772BE00236359 /* Movie.m */; };
 		933D33F015971AA100565593 /* SourceSelectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 933D33EF15971AA100565593 /* SourceSelectionController.m */; };
 		933D33F21597228B00565593 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 933D33F11597228A00565593 /* AVFoundation.framework */; };
 		9376D9FA15A23C8A00E62513 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9376D9F915A23C8A00E62513 /* libxml2.dylib */; };
 		9376D9FB15A2402E00E62513 /* HTMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291AB15A0BE6700724592 /* HTMLNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		9376D9FC15A2402E00E62513 /* HTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291AD15A0BE6700724592 /* HTMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9382918D15A08D0300724592 /* Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9382918B15A08D0300724592 /* Player.xcdatamodeld */; };
 		9382919315A0981C00724592 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9382919215A0981C00724592 /* CoreData.framework */; };
-		9382919915A098CB00724592 /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382919815A098CB00724592 /* Genre.m */; };
-		9382919C15A098CB00724592 /* Soundtrack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382919B15A098CB00724592 /* Soundtrack.m */; };
-		938291A215A098CC00724592 /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291A115A098CB00724592 /* Song.m */; };
 		938291A815A0997900724592 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 938291A715A0997900724592 /* DataManager.m */; };
 		938874ED15A817D6004A514C /* MoviePreview.m in Sources */ = {isa = PBXBuildFile; fileRef = 938874EC15A817D6004A514C /* MoviePreview.m */; };
 		938874F115A875CD004A514C /* ReflectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9359CF1F15A60E1600A25257 /* ReflectionView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -44,7 +38,6 @@
 		93A8DE2215E65DEF00763E66 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93A8DE2115E65DEF00763E66 /* SystemConfiguration.framework */; };
 		93A8DE2815E680A600763E66 /* EchoprintConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A8DE2715E680A600763E66 /* EchoprintConnector.m */; };
 		93A8DE2A15E6874400763E66 /* TSLibraryImport.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A8DE2415E67DFA00763E66 /* TSLibraryImport.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		93AB410715DB99A700014990 /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = 93AB410615DB99A700014990 /* Actor.m */; };
 		93C3B51815E6AD550055D563 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C3B51715E6AD550055D563 /* CoreMedia.framework */; };
 		93D7585514B5BA980095C52F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7585414B5BA980095C52F /* UIKit.framework */; };
 		93D7585714B5BA980095C52F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93D7585614B5BA980095C52F /* Foundation.framework */; };
@@ -81,6 +74,13 @@
 		E33F5FFB179D63E600F1C1FA /* libechoprint-codegen-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E345ED160DFC0800BFAD15 /* libechoprint-codegen-ios.a */; };
 		E33F6021179E870D00F1C1FA /* Resources in Resources */ = {isa = PBXBuildFile; fileRef = E33F6020179E870D00F1C1FA /* Resources */; };
 		E33F6027179E87C800F1C1FA /* carouselItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = E33F6026179E87C800F1C1FA /* carouselItem.xib */; };
+		E3A32867179FE37200F26FCD /* Player.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3A32865179FE37200F26FCD /* Player.xcdatamodeld */; };
+		E3A3286A179FE38300F26FCD /* Actor.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A32869179FE38300F26FCD /* Actor.m */; };
+		E3A3286D179FE38300F26FCD /* Song.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A3286C179FE38300F26FCD /* Song.m */; };
+		E3A32870179FE38300F26FCD /* Soundtrack.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A3286F179FE38300F26FCD /* Soundtrack.m */; };
+		E3A32873179FE38300F26FCD /* Movie.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A32872179FE38300F26FCD /* Movie.m */; };
+		E3A32876179FE38400F26FCD /* Genre.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A32875179FE38400F26FCD /* Genre.m */; };
+		E3A32879179FE38400F26FCD /* Trivia.m in Sources */ = {isa = PBXBuildFile; fileRef = E3A32878179FE38400F26FCD /* Trivia.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,24 +89,13 @@
 		7DC92E7F158501D4000A2C8B /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		7DE57E62158E4CCC0095F9FC /* IMDBConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDBConnector.h; sourceTree = "<group>"; };
 		7DE57E63158E4CCC0095F9FC /* IMDBConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMDBConnector.m; sourceTree = "<group>"; };
-		930E73881617723800236359 /* Trivia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trivia.h; sourceTree = "<group>"; };
-		930E73891617723800236359 /* Trivia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trivia.m; sourceTree = "<group>"; };
-		930E738C161772BE00236359 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
-		930E738D161772BE00236359 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
 		933D33EE15971AA100565593 /* SourceSelectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceSelectionController.h; sourceTree = "<group>"; };
 		933D33EF15971AA100565593 /* SourceSelectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceSelectionController.m; sourceTree = "<group>"; };
 		933D33F11597228A00565593 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		9359CF1E15A60E1600A25257 /* ReflectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReflectionView.h; sourceTree = "<group>"; };
 		9359CF1F15A60E1600A25257 /* ReflectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReflectionView.m; sourceTree = "<group>"; };
 		9376D9F915A23C8A00E62513 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		9382918C15A08D0300724592 /* Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Player.xcdatamodel; sourceTree = "<group>"; };
 		9382919215A0981C00724592 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		9382919715A098CB00724592 /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Genre.h; sourceTree = "<group>"; };
-		9382919815A098CB00724592 /* Genre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Genre.m; sourceTree = "<group>"; };
-		9382919A15A098CB00724592 /* Soundtrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soundtrack.h; sourceTree = "<group>"; };
-		9382919B15A098CB00724592 /* Soundtrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soundtrack.m; sourceTree = "<group>"; };
-		938291A015A098CB00724592 /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Song.h; sourceTree = "<group>"; };
-		938291A115A098CB00724592 /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Song.m; sourceTree = "<group>"; };
 		938291A615A0997900724592 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		938291A715A0997900724592 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		938291AA15A0BE6700724592 /* HTMLNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HTMLNode.h; sourceTree = "<group>"; };
@@ -158,8 +147,6 @@
 		93A8DE2515E67DFA00763E66 /* TSLibraryImport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TSLibraryImport.h; path = EchoNest/TSLibraryImport.h; sourceTree = "<group>"; };
 		93A8DE2615E680A600763E66 /* EchoprintConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EchoprintConnector.h; sourceTree = "<group>"; };
 		93A8DE2715E680A600763E66 /* EchoprintConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EchoprintConnector.m; sourceTree = "<group>"; };
-		93AB410515DB99A700014990 /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Actor.h; sourceTree = "<group>"; };
-		93AB410615DB99A700014990 /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Actor.m; sourceTree = "<group>"; };
 		93C3B51715E6AD550055D563 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		93D7585014B5BA970095C52F /* Videoplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Videoplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D7585414B5BA980095C52F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -218,6 +205,19 @@
 		93F788C915C8019A00D34E2E /* TMDBConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TMDBConnector.m; sourceTree = "<group>"; };
 		E33F6020179E870D00F1C1FA /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Resources; path = Videoplayer/Resources; sourceTree = "<group>"; };
 		E33F6026179E87C800F1C1FA /* carouselItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = carouselItem.xib; sourceTree = "<group>"; };
+		E3A32866179FE37200F26FCD /* Player.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Player.xcdatamodel; sourceTree = "<group>"; };
+		E3A32868179FE38300F26FCD /* Actor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Actor.h; path = Model/Actor.h; sourceTree = "<group>"; };
+		E3A32869179FE38300F26FCD /* Actor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Actor.m; path = Model/Actor.m; sourceTree = "<group>"; };
+		E3A3286B179FE38300F26FCD /* Song.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Song.h; path = Model/Song.h; sourceTree = "<group>"; };
+		E3A3286C179FE38300F26FCD /* Song.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Song.m; path = Model/Song.m; sourceTree = "<group>"; };
+		E3A3286E179FE38300F26FCD /* Soundtrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Soundtrack.h; path = Model/Soundtrack.h; sourceTree = "<group>"; };
+		E3A3286F179FE38300F26FCD /* Soundtrack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Soundtrack.m; path = Model/Soundtrack.m; sourceTree = "<group>"; };
+		E3A32871179FE38300F26FCD /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Movie.h; path = Model/Movie.h; sourceTree = "<group>"; };
+		E3A32872179FE38300F26FCD /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Movie.m; path = Model/Movie.m; sourceTree = "<group>"; };
+		E3A32874179FE38400F26FCD /* Genre.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Genre.h; path = Model/Genre.h; sourceTree = "<group>"; };
+		E3A32875179FE38400F26FCD /* Genre.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Genre.m; path = Model/Genre.m; sourceTree = "<group>"; };
+		E3A32877179FE38400F26FCD /* Trivia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Trivia.h; path = Model/Trivia.h; sourceTree = "<group>"; };
+		E3A32878179FE38400F26FCD /* Trivia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Trivia.m; path = Model/Trivia.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,19 +268,19 @@
 		9382918915A08CBB00724592 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9382918B15A08D0300724592 /* Player.xcdatamodeld */,
-				930E738C161772BE00236359 /* Movie.h */,
-				930E738D161772BE00236359 /* Movie.m */,
-				930E73881617723800236359 /* Trivia.h */,
-				930E73891617723800236359 /* Trivia.m */,
-				93AB410515DB99A700014990 /* Actor.h */,
-				93AB410615DB99A700014990 /* Actor.m */,
-				938291A015A098CB00724592 /* Song.h */,
-				938291A115A098CB00724592 /* Song.m */,
-				9382919A15A098CB00724592 /* Soundtrack.h */,
-				9382919B15A098CB00724592 /* Soundtrack.m */,
-				9382919715A098CB00724592 /* Genre.h */,
-				9382919815A098CB00724592 /* Genre.m */,
+				E3A32865179FE37200F26FCD /* Player.xcdatamodeld */,
+				E3A32877179FE38400F26FCD /* Trivia.h */,
+				E3A32878179FE38400F26FCD /* Trivia.m */,
+				E3A32874179FE38400F26FCD /* Genre.h */,
+				E3A32875179FE38400F26FCD /* Genre.m */,
+				E3A32871179FE38300F26FCD /* Movie.h */,
+				E3A32872179FE38300F26FCD /* Movie.m */,
+				E3A3286E179FE38300F26FCD /* Soundtrack.h */,
+				E3A3286F179FE38300F26FCD /* Soundtrack.m */,
+				E3A3286B179FE38300F26FCD /* Song.h */,
+				E3A3286C179FE38300F26FCD /* Song.m */,
+				E3A32868179FE38300F26FCD /* Actor.h */,
+				E3A32869179FE38300F26FCD /* Actor.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -600,10 +600,6 @@
 				933D33F015971AA100565593 /* SourceSelectionController.m in Sources */,
 				93D8313C15975F3600A9A912 /* iCarousel.m in Sources */,
 				93D831621598FA0E00A9A912 /* DataConnector.m in Sources */,
-				9382918D15A08D0300724592 /* Player.xcdatamodeld in Sources */,
-				9382919915A098CB00724592 /* Genre.m in Sources */,
-				9382919C15A098CB00724592 /* Soundtrack.m in Sources */,
-				938291A215A098CC00724592 /* Song.m in Sources */,
 				938291A815A0997900724592 /* DataManager.m in Sources */,
 				938874F115A875CD004A514C /* ReflectionView.m in Sources */,
 				938874ED15A817D6004A514C /* MoviePreview.m in Sources */,
@@ -611,7 +607,6 @@
 				93A288FC15CEAE8300E86671 /* ActorView.m in Sources */,
 				93A2890215CEBB0300E86671 /* HorizontalTableView.m in Sources */,
 				93A2926615CFFAD300520A80 /* ActorDetailsView.m in Sources */,
-				93AB410715DB99A700014990 /* Actor.m in Sources */,
 				93A8DDFE15E6593500763E66 /* ASIAuthenticationDialog.m in Sources */,
 				93A8DDFF15E6593500763E66 /* ASIDownloadCache.m in Sources */,
 				93A8DE0015E6593500763E66 /* ASIFormDataRequest.m in Sources */,
@@ -622,10 +617,15 @@
 				93A8DE2815E680A600763E66 /* EchoprintConnector.m in Sources */,
 				93A4AA4815FCDCE20091A950 /* LayerOverview.m in Sources */,
 				93E345F1160E1ED000BFAD15 /* RekognitionConnector.m in Sources */,
-				930E738A1617723800236359 /* Trivia.m in Sources */,
-				930E738E161772BE00236359 /* Movie.m in Sources */,
 				E33F5FF9179D61C400F1C1FA /* GetPCMFromFile.cpp in Sources */,
 				E33F5FFA179D61CA00F1C1FA /* Codegen_wrapper.cpp in Sources */,
+				E3A32867179FE37200F26FCD /* Player.xcdatamodeld in Sources */,
+				E3A3286A179FE38300F26FCD /* Actor.m in Sources */,
+				E3A3286D179FE38300F26FCD /* Song.m in Sources */,
+				E3A32870179FE38300F26FCD /* Soundtrack.m in Sources */,
+				E3A32873179FE38300F26FCD /* Movie.m in Sources */,
+				E3A32876179FE38400F26FCD /* Genre.m in Sources */,
+				E3A32879179FE38400F26FCD /* Trivia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,13 +794,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9382918B15A08D0300724592 /* Player.xcdatamodeld */ = {
+		E3A32865179FE37200F26FCD /* Player.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9382918C15A08D0300724592 /* Player.xcdatamodel */,
+				E3A32866179FE37200F26FCD /* Player.xcdatamodel */,
 			);
-			currentVersion = 9382918C15A08D0300724592 /* Player.xcdatamodel */;
-			path = Player.xcdatamodeld;
+			currentVersion = E3A32866179FE37200F26FCD /* Player.xcdatamodel */;
+			name = Player.xcdatamodeld;
+			path = Model/Player.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

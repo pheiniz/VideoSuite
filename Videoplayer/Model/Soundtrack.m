@@ -2,19 +2,21 @@
 //  Soundtrack.m
 //  Videoplayer
 //
-//  Created by heiniz on 7/1/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Paul Heiniz on 24/07/2013.
+//
 //
 
 #import "Soundtrack.h"
+#import "Movie.h"
+#import "Song.h"
 
 
 @implementation Soundtrack
 
-@dynamic name;
 @dynamic amazonID;
 @dynamic itunesID;
-@dynamic songs;
+@dynamic name;
 @dynamic movie;
+@dynamic songs;
 
 @end

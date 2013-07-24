@@ -2,13 +2,14 @@
 //  Genre.h
 //  Videoplayer
 //
-//  Created by heiniz on 7/1/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Paul Heiniz on 24/07/2013.
+//
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Movie;
 
 @interface Genre : NSManagedObject
 
@@ -18,8 +19,8 @@
 
 @interface Genre (CoreDataGeneratedAccessors)
 
-- (void)addMoviesObject:(NSManagedObject *)value;
-- (void)removeMoviesObject:(NSManagedObject *)value;
+- (void)addMoviesObject:(Movie *)value;
+- (void)removeMoviesObject:(Movie *)value;
 - (void)addMovies:(NSSet *)values;
 - (void)removeMovies:(NSSet *)values;
 

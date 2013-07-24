@@ -2,7 +2,7 @@
 //  Trivia.m
 //  Videoplayer
 //
-//  Created by Paul Heiniz on 29.09.12.
+//  Created by Paul Heiniz on 24/07/2013.
 //
 //
 
@@ -12,8 +12,8 @@
 
 @implementation Trivia
 
-@dynamic trivia;
 @dynamic frame;
+@dynamic trivia;
 @dynamic movie;
 
 @end

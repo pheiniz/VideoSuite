@@ -2,7 +2,7 @@
 //  Trivia.h
 //  Videoplayer
 //
-//  Created by Paul Heiniz on 29.09.12.
+//  Created by Paul Heiniz on 24/07/2013.
 //
 //
 
@@ -13,8 +13,8 @@
 
 @interface Trivia : NSManagedObject
 
-@property (nonatomic, retain) NSString * trivia;
 @property (nonatomic, retain) NSNumber * frame;
+@property (nonatomic, retain) NSString * trivia;
 @property (nonatomic, retain) Movie *movie;
 
 @end

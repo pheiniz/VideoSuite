@@ -2,7 +2,7 @@
 //  Actor.m
 //  Videoplayer
 //
-//  Created by Paul Heiniz on 8/15/12.
+//  Created by Paul Heiniz on 24/07/2013.
 //
 //
 
@@ -13,14 +13,14 @@
 @implementation Actor
 
 @dynamic actorID;
+@dynamic biography;
 @dynamic birthdate;
+@dynamic birthplace;
 @dynamic character;
+@dynamic homepage;
 @dynamic name;
 @dynamic order;
 @dynamic picture;
-@dynamic biography;
-@dynamic homepage;
-@dynamic birthplace;
 @dynamic movies;
 
 @end
